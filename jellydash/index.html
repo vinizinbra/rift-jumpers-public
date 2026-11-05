@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Jelly Dash | Pacha Games</title>
+<meta name="description" content="Jelly Dash is a fast-paced multiplayer racing game where gooey jelly characters swing, stretch and dash to the finish line. Play free on the web or Android.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jelly Dash">
+<meta property="og:description" content="Swing, stretch and dash to the finish line in fast multiplayer races. Free on the web and Android.">
+<meta property="og:url" content="https://pachagames.com/jellydash/">
+<meta property="og:image" content="https://pachagames.com/assets/jelly-dash.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://pachagames.com/jellydash/">
+<link rel="icon" href="../assets/pacha-games-logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800&family=Bowlby+One&display=swap">
+<style>
+/* Jelly Dash page: the key art's hazard yellow and thick comic outlines, with chunky sticker buttons that squash on press. */
+:root{--yellow:#FFF200;--ink:#141414;--paper:#fffdf0;--muted:#55534a;--green:#35C21C;--red:#E8331B;--blue:#1B7CE0;--gutter:clamp(18px,5vw,64px);--sans:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;--display:"Bowlby One",Impact,sans-serif;color-scheme:light}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:500 17px/1.5 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+h1,h2,h3,p,ul{margin:0;padding:0}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:var(--gutter)}
+
+.bar{position:relative;z-index:3;background:var(--yellow)}
+.bar .wrap{display:flex;align-items:center;gap:20px;padding-block:12px}
+.bar img{height:56px;width:auto;display:block}
+.bar nav{margin-left:auto;display:flex;gap:clamp(16px,3vw,28px)}
+.bar nav a{font:800 12px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;padding:8px 0}
+.bar nav a:hover{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}
+
+.hero{position:relative;background:var(--yellow);overflow:hidden;padding-block:clamp(20px,4vw,48px) clamp(64px,8vw,104px);clip-path:polygon(0 0,100% 0,100% calc(100% - clamp(20px,4vw,56px)),0 100%)}
+.streaks{position:absolute;inset:0;background:repeating-linear-gradient(170deg,transparent 0 44px,rgba(53,194,28,.28) 44px 50px,transparent 50px 132px,rgba(232,51,27,.18) 132px 136px,transparent 136px 230px);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(24px,4vw,56px);align-items:center}
+h1{font:400 clamp(2.9rem,6.6vw,5.6rem)/.98 var(--display);letter-spacing:-.005em;text-transform:uppercase}
+h1 span{display:block}
+h1 .s2{color:var(--red);-webkit-text-stroke:0}
+.lede{margin-top:20px;font-size:clamp(1.05rem,1.5vw,1.2rem);max-width:40ch}
+.ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 22px;background:#fff;border:3px solid var(--ink);border-radius:14px;box-shadow:0 5px 0 var(--ink);font:800 14px/1 var(--sans);transition:translate .08s,box-shadow .08s}
+.btn:hover{translate:0 -2px;box-shadow:0 7px 0 var(--ink)}
+.btn:active{translate:0 4px;box-shadow:0 1px 0 var(--ink)}
+.btn.go{background:var(--green)}
+.art{display:block;border:5px solid var(--ink);border-radius:22px;overflow:hidden;box-shadow:10px 10px 0 var(--ink);rotate:1.6deg;background:var(--yellow)}
+.art img{display:block;width:100%;height:auto}
+
+.stats{list-style:none;position:relative;z-index:2;margin-top:clamp(-40px,-3vw,-16px);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.stats li{background:#fff;border:3px solid var(--ink);border-radius:16px;padding:16px 18px;box-shadow:0 5px 0 var(--ink)}
+.stats b{display:block;font:400 clamp(1.5rem,2.6vw,2.1rem)/1.05 var(--display)}
+.stats span{display:block;margin-top:5px;font-size:13.5px;line-height:1.35;color:var(--muted)}
+
+section{padding-top:clamp(56px,7vw,92px)}
+h2{font:400 clamp(2rem,4.2vw,3.2rem)/1 var(--display);text-transform:uppercase}
+.trailer{position:relative;display:block;width:100%;margin-top:26px;padding:0;background:var(--ink);border:5px solid var(--ink);border-radius:22px;overflow:hidden;aspect-ratio:16/9;box-shadow:0 8px 0 var(--ink)}
+.trailer img{display:block;width:100%;height:100%;object-fit:cover;transition:scale .2s}
+.trailer:hover img{scale:1.02}
+.trailer .play{position:absolute;left:50%;top:50%;translate:-50% -50%;width:clamp(68px,10vw,104px);aspect-ratio:1;display:grid;place-items:center;background:var(--red);border:4px solid var(--ink);border-radius:50%;box-shadow:0 6px 0 var(--ink)}
+.trailer .play svg{width:42%;margin-left:6%}
+.trailer iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+.how{margin-top:26px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:18px;align-items:stretch}
+.clip{display:block;width:100%;height:100%;min-height:0;object-fit:cover;background:var(--yellow);border:5px solid var(--ink);border-radius:22px;box-shadow:0 8px 0 var(--ink)}
+.feats{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.feats li{padding:20px;border:3px solid var(--ink);border-radius:18px;background:var(--c)}
+.feats h3{font:400 1.3rem/1.1 var(--display)}
+.feats p{margin-top:8px;font-size:15px;line-height:1.4}
+
+.phones{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,2.4vw,28px);margin-top:26px}
+.phone{margin:0;display:block;border:6px solid var(--ink);border-radius:26px;overflow:hidden;background:var(--ink);box-shadow:0 8px 0 rgba(20,20,20,.22)}
+.phone img{display:block;width:100%;height:auto}
+
+.end{margin-top:clamp(64px,8vw,104px);padding-block:clamp(44px,6vw,72px) 28px;background:var(--yellow)}
+.end .row{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between}
+.end .ctas{margin-top:0}
+footer{margin-top:44px;padding-top:16px;border-top:3px solid var(--ink);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;font-size:14px;font-weight:700}
+footer a:hover{text-decoration:underline}
+
+@media (prefers-reduced-motion:no-preference){
+  .art{animation:wob .6s cubic-bezier(.3,1.5,.5,1) both}
+  @keyframes wob{from{opacity:0;transform:scale(.9,1.08) translateY(16px)}to{opacity:1;transform:none}}
+  .streaks{animation:run 14s linear infinite}
+  @keyframes run{to{background-position:230px 0}}
+}
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:minmax(0,1fr)}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .how{grid-template-columns:minmax(0,1fr)}
+  .clip{height:auto;aspect-ratio:16/9}
+  .phones{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(var(--gutter) * -1);padding:0 var(--gutter) 12px;scrollbar-width:none}
+  .phone{flex:0 0 min(62vw,260px);scroll-snap-align:center}
+}
+@media (max-width:480px){
+  .bar nav a[href="#trailer"]{display:none}
+  .ctas .btn{flex:1 1 100%}
+  .art{box-shadow:6px 6px 0 var(--ink)}
+}
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <a href="../" aria-label="Pacha Games home"><img src="../assets/pacha-games-logo.png" alt="Pacha Games" width="512" height="512"></a>
+    <nav aria-label="Sections"><a href="#trailer">Trailer</a><a href="#screens">Screenshots</a><a href="../">All games</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="streaks"></div>
+    <div class="wrap">
+      <div>
+        <h1><span>Swing.</span><span>Stretch.</span><span class="s2">Dash.</span></h1>
+        <p class="lede">Jelly Dash is a fast-paced multiplayer racing game. Gooey jellies race players worldwide to the finish line, with one-finger controls that are easy to learn and hard to master.</p>
+        <div class="ctas">
+          <a class="btn go" href="https://www.crazygames.com/game/jelly-dash-uki" target="_blank" rel="noopener">Play on the web ▶</a>
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.pachagames.jellydash" target="_blank" rel="noopener">Get it on Google Play ↗</a>
+        </div>
+      </div>
+      <a class="art" href="#trailer" aria-label="Watch the Jelly Dash trailer"><img src="../assets/jelly-dash.jpg" alt="Jelly Dash key art with green, blue and red jellies racing on yellow" width="1280" height="720"></a>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <ul class="stats">
+      <li><b>1M+</b><span>plays on CrazyGames</span></li>
+      <li><b>9.1</b><span>player rating on CrazyGames</span></li>
+      <li><b>1st place</b><span>CrazyGames multiplayer web game jam</span></li>
+      <li><b>Free</b><span>on the web and Android</span></li>
+    </ul>
+
+    <section id="trailer" aria-labelledby="trailer-h">
+      <h2 id="trailer-h">See it move.</h2>
+      <button class="trailer" id="tr" type="button" aria-label="Play the Jelly Dash trailer">
+        <img src="img/trailer.jpg" alt="" width="1280" height="720" loading="lazy">
+        <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M6 4l14 8-14 8z"/></svg></span>
+      </button>
+    </section>
+
+    <section aria-labelledby="how-h">
+      <h2 id="how-h">One finger. Real rivals.</h2>
+      <div class="how">
+        <video class="clip" id="clip" src="video/gameplay.mp4" width="568" height="320" muted loop playsinline autoplay preload="metadata" aria-label="Jelly Dash gameplay: jellies racing through neon and carnival tracks"></video>
+        <ul class="feats">
+        <li style="--c:#d9f7c9"><h3>One-finger play</h3><p>Swing and stretch with a single finger. Anyone can start racing right away.</p></li>
+        <li style="--c:#d3e8ff"><h3>Race the world</h3><p>Go lap for lap against players from around the world.</p></li>
+        <li style="--c:#ffe0d9"><h3>Power-ups</h3><p>Grab mystery boxes for bombs and crates, then use them to take the lead.</p></li>
+        <li style="--c:#fff7a8"><h3>Wild tracks</h3><p>Dash over lava caves, rooftops and neon city streets.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="screens" aria-labelledby="screens-h">
+      <h2 id="screens-h">Screenshots.</h2>
+      <div class="phones">
+        <a class="phone" href="img/lava.jpg" target="_blank" rel="noopener"><img src="img/lava.jpg" alt="Leading a race over a lava cave" width="720" height="1280" loading="lazy"></a>
+        <a class="phone" href="img/city.jpg" target="_blank" rel="noopener"><img src="img/city.jpg" alt="Racing through a neon city" width="720" height="1280" loading="lazy"></a>
+        <a class="phone" href="img/bomb.jpg" target="_blank" rel="noopener"><img src="img/bomb.jpg" alt="Holding a bomb power-up in first place" width="720" height="1280" loading="lazy"></a>
+        <a class="phone" href="img/lap.jpg" target="_blank" rel="noopener"><img src="img/lap.jpg" alt="Chasing the leader on a rooftop lap" width="720" height="1280" loading="lazy"></a>
+      </div>
+    </section>
+  </div>
+
+  <div class="end">
+    <div class="wrap">
+      <div class="row">
+        <h2>Ready to race?</h2>
+        <div class="ctas">
+          <a class="btn go" href="https://www.crazygames.com/game/jelly-dash-uki" target="_blank" rel="noopener">Play on the web ▶</a>
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.pachagames.jellydash" target="_blank" rel="noopener">Google Play ↗</a>
+        </div>
+      </div>
+      <footer><span>© 2026 <a href="../">Pacha Games</a></span><a href="mailto:vini@pachagames.com">vini@pachagames.com</a></footer>
+    </div>
+  </div>
+</main>
+<script>
+var clip = document.getElementById("clip");
+if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { clip.removeAttribute("autoplay"); clip.pause(); clip.controls = true; }
+document.getElementById("tr").addEventListener("click", function () {
+  var f = document.createElement("iframe");
+  f.src = "https://www.youtube-nocookie.com/embed/aYdtgqcObXE?autoplay=1&rel=0";
+  f.title = "Jelly Dash trailer";
+  f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+  var w = document.createElement("div");
+  w.className = "trailer"; w.appendChild(f);
+  this.replaceWith(w);
+});
+</script>
+</body>
+</html>
