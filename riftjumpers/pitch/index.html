@@ -38,8 +38,8 @@ img{display:block;max-width:100%}
 .bar nav a:hover{color:var(--cyan)}
 
 .trailer{position:relative;display:block;width:100%;aspect-ratio:16/9;overflow:hidden;background:#000;border:0;padding:0;cursor:pointer}
-.trailer img{width:100%;height:100%;object-fit:cover;opacity:.72;transition:opacity .15s}
-.trailer:hover img{opacity:.55}
+.trailer img{width:100%;height:100%;object-fit:cover;transition:opacity .15s}
+.trailer:hover img{opacity:.8}
 .trailer .play{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:12px;color:#fff;font:800 italic clamp(1.1rem,2.6vw,1.9rem)/1 var(--display);text-transform:uppercase;text-shadow:0 2px 0 var(--bg)}
 .trailer .disc{width:clamp(60px,9vw,104px);aspect-ratio:1;display:grid;place-items:center;background:var(--pink-deep);border:3px solid #fff;border-radius:50%}
 .trailer .disc svg{width:38%;margin-left:6%}
@@ -128,7 +128,7 @@ section{margin-top:clamp(30px,4vw,44px)}
 <main>
   <div class="wrap">
     <button class="trailer" id="tr" type="button" aria-label="Play the Rift Jumpers trailer">
-      <img src="../img/keyart-trio-action.jpg" alt="" width="1672" height="941">
+      <img src="img/trailer-cover.jpg" alt="" width="1287" height="724">
       <span class="play"><span class="disc"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M6 4l14 8-14 8z"/></svg></span>Watch the trailer</span>
     </button>
     <div class="ctas">
