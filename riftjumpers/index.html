@@ -32,7 +32,7 @@
   color-scheme:light;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:clip}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
@@ -72,14 +72,19 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 @media (max-width:420px){.nav .btn{padding:11px 14px}}
 
 /* Hero */
-.hero{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;justify-items:center;text-align:center;padding-block:24px 0}
-.hero .copy{display:grid;gap:24px;justify-items:center;padding-block:0 20px}
-.hero h1{font-size:clamp(2.5rem,5.2vw,4.4rem)}
+.hero{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;justify-items:center;text-align:center;padding-block:0}
+.hero .copy{display:grid;gap:14px;justify-items:center;padding-block:clamp(16px,2.4vw,28px) 16px}
+.hero h1{font-size:clamp(2.3rem,4.4vw,3.8rem)}
+.hero h1 br{display:none}
+.hero h1 span{margin-left:.24em}
+@media (max-width:700px){.hero h1 br{display:inline}.hero h1 span{margin-left:0}}
 .hero h1 span{color:var(--pink)}
-.hero p{color:var(--muted);font-size:1.15rem;max-width:52ch}
+.hero p{color:var(--muted);font-size:1.1rem;max-width:74ch}
 .ctas{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-.hero .art{order:-1;width:min(100%,560px)}
-.hero .art img{width:100%;height:auto;max-height:40vh;object-fit:contain;display:block}
+.hero .art{position:relative;order:-1;width:100vw;margin-inline:calc(50% - 50vw)}
+.hero .art>img:first-child{width:100%;height:min(54vh,56.25vw);object-fit:cover;object-position:center top;display:block}
+.hero .art::after{content:"";position:absolute;inset:auto 0 0;height:46%;background:linear-gradient(0deg,rgba(10,15,36,.82),transparent);pointer-events:none}
+.art-logo{position:absolute;z-index:1;left:max(20px,calc(50vw - 600px));bottom:clamp(10px,2vw,26px);width:auto;height:clamp(84px,14vw,190px);filter:drop-shadow(0 4px 0 rgba(10,15,36,.8))}
 .stats{display:flex;flex-wrap:wrap;justify-content:center;text-align:center;border-top:1px solid var(--line);margin-top:8px}
 .stat{padding:20px 36px 4px;border-right:1px solid var(--line);display:grid;gap:4px}
 .stat:last-child{border-right:0}
@@ -213,7 +218,7 @@ footer a{color:var(--pink-ink)}
         <a class="btn" href="rift-jumpers-press-kit.zip" download>Download press kit · 38 MB ↓</a>
       </div>
     </div>
-    <div class="art"><img src="img/trio-sticker-wide.webp" alt="Brute, Max and Pixie striking an action pose"></div>
+    <div class="art"><img src="img/keyart-trio-action.jpg" alt="Max, Brute and Pixie charge out of a hangar with guns and a skull bomb" width="1672" height="941"><img class="art-logo" src="logos/rift-jumpers-logo-white.svg" alt="" width="2000" height="1839"></div>
   </header>
   <div class="stats">
     <div class="stat"><b>1–4 players</b><span class="cap">Online co-op</span></div>
@@ -226,7 +231,7 @@ footer a{color:var(--pink-ink)}
       <div><span class="eyebrow">Trailer</span><h2 id="trailer-h">See it in action.</h2></div>
     </div>
     <a class="trailer" href="https://youtu.be/r-r9tvhC49o" target="_blank" rel="noopener" aria-label="Watch the Rift Jumpers trailer on YouTube">
-      <img src="img/keyart-trio-action.jpg" alt="">
+      <img src="screens/horde.jpg" alt="">
       <span class="play"><span class="btn-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M6 4l14 8-14 8z"/></svg></span><b>Watch the trailer</b></span>
     </a>
   </section>
