@@ -67,7 +67,8 @@ h2{font-weight:900;font-stretch:125%;font-size:clamp(2rem,4.6vw,3.5rem);line-hei
 .status{font:800 11.5px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--cyan)}
 .feature p{color:#e3e4ec;max-width:46ch}
 .feature .art{position:relative;align-self:end;justify-self:end;width:min(112%,620px);height:auto;display:block;margin:24px -2% -3% 0;filter:drop-shadow(0 18px 30px rgba(10,15,36,.5))}
-.second{margin-top:18px;display:grid;align-items:center;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);background:#fff;border:1px solid var(--line)}
+.others{margin-top:clamp(44px,5vw,68px);font-size:clamp(1.5rem,3vw,2.3rem)}
+.second{margin-top:20px;display:grid;align-items:center;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);background:#fff;border:1px solid var(--line)}
 .second>a{display:block;min-width:0}
 .gp{display:inline-block;line-height:0;margin:-5px -4px}
 .gp img{display:block;width:auto;height:70px;min-height:0;object-fit:contain}
@@ -155,7 +156,9 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1
         <img class="art" src="riftjumpers/img/trio-sticker-wide.webp" alt="Brute, Max and Pixie from Rift Jumpers" width="1448" height="1086" loading="lazy">
       </article>
 
-      <article class="second">
+      <h2 class="others" id="other-games">Other games</h2>
+
+      <article class="second" aria-labelledby="other-games">
         <a href="jellydash/" aria-label="Jelly Dash page"><img src="assets/jelly-dash.jpg" alt="Jelly Dash banner with racing red, blue and green jellies" width="1672" height="941" loading="lazy"></a>
         <div class="text">
           <h3>Jelly Dash</h3>
