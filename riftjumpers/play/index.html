@@ -54,8 +54,8 @@ main{flex:1;min-height:0;display:grid;place-items:center;padding:0 max(0px,env(s
   </div>
 </main>
 <script>
-// The current itch build. Each `butler push` may change this path, so keep it in one place.
-var GAME_URL = "https://html-classic.itch.zone/html/20262782-2299157/index.html";
+// itch's official embed for this upload. `butler push` to the same channel should keep the upload id.
+var GAME_URL = "https://itch.io/embed-upload/20262782?color=0a0f24&secret=lrMKw70Dl2JN6OmQgEWowZIbgc";
 var stage = document.getElementById("stage"), gate = document.getElementById("gate"), fs = document.getElementById("fs");
 function start() {
   var f = document.createElement("iframe");
