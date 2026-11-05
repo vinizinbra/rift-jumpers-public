@@ -6,4 +6,4 @@ Static site served by GitHub Pages, plain HTML with no build step.
 - `jellydash/`: Jelly Dash page
 - `riftjumpers/`: Rift Jumpers press kit
 - `riftjumpers/play/`: playtest page, using the official itch embed
-- `riftjumpers/pitch/`: one-pager and trailer for publishers, not linked from other pages
+- `riftjumpers/pitch/`: trailer and the one-pager (fixed 794x1123 markup, scaled to fit) for publishers, not linked from other pages
