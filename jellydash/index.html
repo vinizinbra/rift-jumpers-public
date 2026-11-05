@@ -12,7 +12,8 @@
 <meta property="og:image" content="https://pachagames.com/assets/jelly-dash.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://pachagames.com/jellydash/">
-<link rel="icon" href="../assets/pacha-games-logo.png" type="image/png">
+<link rel="icon" href="img/icon.png" type="image/png">
+<link rel="apple-touch-icon" href="img/icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800&family=Bowlby+One&display=swap">
@@ -41,8 +42,13 @@ h1{font:400 clamp(2.9rem,6.6vw,5.6rem)/.98 var(--display);letter-spacing:-.005em
 h1 span{display:block}
 h1 .s2{color:var(--red);-webkit-text-stroke:0}
 .lede{margin-top:20px;font-size:clamp(1.05rem,1.5vw,1.2rem);max-width:40ch}
-.ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}
+.ctas{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:26px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 22px;background:#fff;border:3px solid var(--ink);border-radius:14px;box-shadow:0 5px 0 var(--ink);font:800 14px/1 var(--sans);transition:translate .08s,box-shadow .08s}
+.badge{display:inline-block;line-height:0;margin:-5px -4px;transition:translate .08s}
+.badge:hover{translate:0 -2px}
+.badge img{display:block;height:76px;width:auto}
+.name{display:flex;align-items:center;gap:12px;margin-bottom:18px;font:400 1.25rem/1 var(--display);text-transform:uppercase}
+.name img{display:block;width:56px;height:56px;border:3px solid var(--ink);border-radius:14px}
 .btn:hover{translate:0 -2px;box-shadow:0 7px 0 var(--ink)}
 .btn:active{translate:0 4px;box-shadow:0 1px 0 var(--ink)}
 .btn.go{background:var(--green)}
@@ -97,6 +103,7 @@ footer a:hover{text-decoration:underline}
 @media (max-width:480px){
   .bar nav a[href="#trailer"]{display:none}
   .ctas .btn{flex:1 1 100%}
+  .badge{margin-inline:auto}
   .art{box-shadow:6px 6px 0 var(--ink)}
 }
 </style>
@@ -114,14 +121,15 @@ footer a:hover{text-decoration:underline}
     <div class="streaks"></div>
     <div class="wrap">
       <div>
+        <div class="name"><img src="img/icon.png" alt="" width="256" height="256"><span>Jelly Dash</span></div>
         <h1><span>Swing.</span><span>Stretch.</span><span class="s2">Dash.</span></h1>
         <p class="lede">Jelly Dash is a fast-paced multiplayer racing game. Gooey jellies race players worldwide to the finish line, with one-finger controls that are easy to learn and hard to master.</p>
         <div class="ctas">
           <a class="btn go" href="https://www.crazygames.com/game/jelly-dash-uki" target="_blank" rel="noopener">Play on the web ▶</a>
-          <a class="btn" href="https://play.google.com/store/apps/details?id=com.pachagames.jellydash" target="_blank" rel="noopener">Get it on Google Play ↗</a>
+          <a class="badge" href="https://play.google.com/store/apps/details?id=com.pachagames.jellydash" target="_blank" rel="noopener"><img src="img/google-play-badge.png" alt="Get it on Google Play" width="646" height="250"></a>
         </div>
       </div>
-      <a class="art" href="#trailer" aria-label="Watch the Jelly Dash trailer"><img src="../assets/jelly-dash.jpg" alt="Jelly Dash key art with green, blue and red jellies racing on yellow" width="1280" height="720"></a>
+      <a class="art" href="#trailer" aria-label="Watch the Jelly Dash trailer"><img src="../assets/jelly-dash.jpg" alt="Jelly Dash banner: red, blue and green jellies racing, with the green one swinging on a rope and a rocket flying past" width="1600" height="900"></a>
     </div>
   </div>
 
@@ -171,7 +179,7 @@ footer a:hover{text-decoration:underline}
         <h2>Ready to race?</h2>
         <div class="ctas">
           <a class="btn go" href="https://www.crazygames.com/game/jelly-dash-uki" target="_blank" rel="noopener">Play on the web ▶</a>
-          <a class="btn" href="https://play.google.com/store/apps/details?id=com.pachagames.jellydash" target="_blank" rel="noopener">Google Play ↗</a>
+          <a class="badge" href="https://play.google.com/store/apps/details?id=com.pachagames.jellydash" target="_blank" rel="noopener"><img src="img/google-play-badge.png" alt="Get it on Google Play" width="646" height="250"></a>
         </div>
       </div>
       <footer><span>© 2026 <a href="../">Pacha Games</a></span><a href="mailto:vini@pachagames.com">vini@pachagames.com</a></footer>
