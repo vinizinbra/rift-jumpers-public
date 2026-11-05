@@ -25,6 +25,7 @@
   --line:#ebebf0;
   --soft:#f7f7fa;
   --pink:#FD3971;
+  --pink-ink:#D81B55;
   --sans:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
   color-scheme:light;
 }
@@ -37,7 +38,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--pink);outline-offse
 h1,h2,h3,p{margin:0}
 h1,h2{font-weight:900;letter-spacing:-.035em;line-height:.95;text-transform:uppercase;text-wrap:balance}
 .wrap{max-width:1240px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
-.eyebrow{font-size:11.5px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--pink)}
+.eyebrow{font-size:11.5px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--pink-ink)}
 .cap{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 
 /* Nav */
@@ -54,32 +55,43 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .logo-card a.f.dark{background:#0a0f24;border-color:#0a0f24}
 .logo-card img{width:100%;height:100%;object-fit:contain;display:block}
 .logo-card.span2{grid-column:span 2}
-.links{display:flex;gap:30px;margin-left:auto}
+.links{display:flex;gap:24px;margin-left:auto}
+.links a,.btn{white-space:nowrap}
+@media (max-width:1240px){.nav-kit{display:none}}
 .links a{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
 .links a:hover{color:var(--pink)}
 .btn{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:14px 22px;border:1.5px solid var(--ink);background:var(--bg);color:var(--ink);cursor:pointer;font-family:inherit}
 .btn:hover{background:var(--ink);color:var(--bg)}
 .btn.dark{background:var(--ink);color:var(--bg)}
 .btn.dark:hover{background:var(--pink);border-color:var(--pink)}
-.btn.pink{background:var(--pink);border-color:var(--pink);color:#fff}
+.btn.pink{background:var(--pink-ink);border-color:var(--pink-ink);color:#fff}
 .btn.pink:hover{background:var(--ink);border-color:var(--ink)}
-@media (max-width:900px){.links{display:none}.nav .btn{margin-left:auto}}
+@media (max-width:900px){.nav .wrap{flex-wrap:wrap;gap:8px 16px}.nav .btn{margin-left:auto}.nav-kit{display:none}.links{order:3;width:100%;margin:0;gap:20px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}.links a{white-space:nowrap;font-size:11px;padding:6px 0}}
 @media (max-width:420px){.nav .btn{padding:11px 14px}}
 
 /* Hero */
-.hero{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;justify-items:center;text-align:center;padding-block:40px 0}
+.hero{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;justify-items:center;text-align:center;padding-block:24px 0}
 .hero .copy{display:grid;gap:24px;justify-items:center;padding-block:0 20px}
-.hero h1{font-size:clamp(2.8rem,6.4vw,5.2rem)}
+.hero h1{font-size:clamp(2.5rem,5.2vw,4.4rem)}
 .hero h1 span{color:var(--pink)}
 .hero p{color:var(--muted);font-size:1.15rem;max-width:52ch}
 .ctas{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-.hero .art{order:-1;width:min(100%,640px)}
-.hero .art img{width:100%;height:auto;display:block;max-width:100%}
+.hero .art{order:-1;width:min(100%,560px)}
+.hero .art img{width:100%;height:auto;max-height:40vh;object-fit:contain;display:block}
 .stats{display:flex;flex-wrap:wrap;justify-content:center;text-align:center;border-top:1px solid var(--line);margin-top:8px}
 .stat{padding:20px 36px 4px;border-right:1px solid var(--line);display:grid;gap:4px}
 .stat:last-child{border-right:0}
 .stat b{font-size:15px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
 @media (max-width:520px){.stat{border-right:0;padding-inline:14px}}
+
+/* Play band */
+.playband{position:relative;margin-top:56px;background:#0a0f24 url("img/play-background.jpg") center 92%/cover;color:#fff;overflow:hidden}
+.playband::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,15,36,.92) 0,rgba(10,15,36,.72) 50%,rgba(10,15,36,.15) 100%)}
+.pb-text{position:relative;display:grid;gap:16px;justify-items:start;padding:clamp(32px,6vw,72px) clamp(24px,5vw,64px)}
+.pb-text .eyebrow{color:#fff}
+.pb-text h2{font-size:clamp(2.2rem,5vw,3.8rem)}
+.pb-text p{max-width:42ch;color:#e6e7ee;font-size:1.05rem}
+@media (max-width:640px){.playband::before{background:rgba(10,15,36,.72)}}
 
 /* Sections */
 .sec{padding-block:88px 0;display:grid;gap:34px}
@@ -93,8 +105,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .trailer img{width:100%;height:100%;object-fit:cover;display:block;opacity:.55;transition:opacity .2s}
 .trailer:hover img{opacity:.4}
 .trailer .play{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:18px;color:#fff;text-align:center}
-.trailer .btn-play{width:96px;height:96px;border-radius:50%;background:var(--pink);display:grid;place-items:center;box-shadow:0 10px 40px rgba(253,57,113,.45)}
-.trailer .btn-play svg{width:34px;height:34px;margin-left:6px}
+.trailer .btn-play{width:clamp(56px,10vw,96px);height:clamp(56px,10vw,96px);border-radius:50%;background:var(--pink);display:grid;place-items:center;box-shadow:0 10px 40px rgba(253,57,113,.45)}
+.trailer .btn-play svg{width:36%;height:36%;margin-left:6%}
 .trailer b{font-size:clamp(1.4rem,3vw,2.2rem);font-weight:900;letter-spacing:-.02em;text-transform:uppercase}
 .trailer small{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.85}
 
@@ -149,7 +161,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .w6{grid-column:span 6}.w4{grid-column:span 4}
 @media (max-width:700px){.w6,.w4{grid-column:span 12}}
 figcaption{display:flex;justify-content:space-between;gap:12px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-figcaption a{color:var(--pink);white-space:nowrap}
+figcaption a{color:var(--pink-ink);white-space:nowrap}
 
 /* Studio + contact */
 .studio{display:grid;grid-template-columns:auto minmax(0,1fr);gap:40px;align-items:center;border:1px solid var(--line);padding:36px}
@@ -164,7 +176,7 @@ figcaption a{color:var(--pink);white-space:nowrap}
 
 footer{margin-top:96px;border-top:1px solid var(--line)}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:22px}
-footer a{color:var(--pink)}
+footer a{color:var(--pink-ink)}
 </style>
 </head>
 <body>
@@ -178,7 +190,8 @@ footer a{color:var(--pink)}
     <div class="links">
       <a href="#trailer">Trailer</a><a href="#game">Game</a><a href="#characters">Characters</a><a href="#screenshots">Screenshots</a><a href="#media">Key art</a><a href="#contact">Contact</a>
     </div>
-    <a class="btn dark" href="rift-jumpers-press-kit.zip" download>Download kit ↓</a>
+    <a class="btn nav-kit" href="rift-jumpers-press-kit.zip" download>Download kit ↓</a>
+    <a class="btn pink" href="play/">Play now ▶</a>
   </div>
 </nav>
 
@@ -189,8 +202,8 @@ footer a{color:var(--pink)}
       <h1>Bold heroes.<br><span>Broken worlds.</span></h1>
       <p>A top-down co-op survivors roguelite for 1–4 players. Explore procedural maps, stack perks on ridiculous guns, survive the horde and take down the boss.</p>
       <div class="ctas">
-        <a class="btn pink" href="rift-jumpers-press-kit.zip" download>Download press kit ↓</a>
-        <a class="btn" href="https://youtu.be/nVJmuOhg51Q" target="_blank" rel="noopener">Watch the trailer ▶</a>
+        <a class="btn pink" href="play/">Play the playtest ▶</a>
+        <a class="btn" href="rift-jumpers-press-kit.zip" download>Download press kit · 39 MB ↓</a>
       </div>
     </div>
     <div class="art"><img src="img/trio-sticker-wide.webp" alt="Brute, Max and Pixie striking an action pose"></div>
@@ -204,41 +217,19 @@ footer a{color:var(--pink)}
   <section class="sec" id="trailer" aria-labelledby="trailer-h">
     <div class="sec-head">
       <div><span class="eyebrow">Trailer</span><h2 id="trailer-h">See it in action.</h2></div>
-      <p>Opens on YouTube: <a href="https://youtu.be/nVJmuOhg51Q" target="_blank" rel="noopener" style="color:var(--pink);font-weight:600">youtu.be/nVJmuOhg51Q</a></p>
     </div>
     <a class="trailer" href="https://youtu.be/nVJmuOhg51Q" target="_blank" rel="noopener" aria-label="Watch the Rift Jumpers trailer on YouTube">
-      <img src="img/keyart-dark.webp" alt="">
-      <span class="play"><span class="btn-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M6 4l14 8-14 8z"/></svg></span><b>Watch the trailer</b><small>YouTube ↗</small></span>
+      <img src="screens/horde.jpg" alt="">
+      <span class="play"><span class="btn-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M6 4l14 8-14 8z"/></svg></span><b>Watch the trailer</b></span>
     </a>
   </section>
 
-  <section class="sec" aria-labelledby="lib">
-    <div class="sec-head">
-      <div><span class="eyebrow">Media library</span><h2 id="lib">Everything you need.</h2></div>
-      <p>Official artwork and information for press and creators. <a href="rift-jumpers-press-kit.zip" download style="color:var(--pink);font-weight:600">Download it all as one zip ↓</a></p>
-    </div>
-    <div class="tiles">
-      <a class="tile" href="#logos"><b>Logos</b><span>Logo · icon · mark</span><i>↗</i></a>
-      <a class="tile" href="#screenshots"><b>Screenshots</b><span>Nine gameplay shots</span><i>↗</i></a>
-      <a class="tile" href="#media"><b>Key art</b><span>Banners · posters</span><i>↗</i></a>
-      <a class="tile" href="#trailer"><b>Trailer</b><span>Watch on YouTube</span><i>↗</i></a>
-      <a class="tile" href="#characters"><b>Characters</b><span>Six hero illustrations</span><i>↗</i></a>
-      <a class="tile" href="#game"><b>Fact sheet</b><span>Game details · studio</span><i>↗</i></a>
-    </div>
-  </section>
-
-  <section class="sec" id="characters" aria-labelledby="crew-h">
-    <div class="sec-head">
-      <div><span class="eyebrow">The crew</span><h2 id="crew-h">Six misfits. One rift.</h2></div>
-      <p>Pick your favorite, or bring the whole squad.</p>
-    </div>
-    <div class="crew">
-      <article class="member" style="--hc:#ff8a1f"><div class="pic full"><img src="img/hero-max.webp" alt="Max, orange-haired gunslinger"></div><div class="bar"><b>Max</b><span>Gunslinger</span></div><p>Goes into a Rage and out-shoots everyone in the room.</p></article>
-      <article class="member" style="--hc:#ff2d8f"><div class="pic full"><img src="img/hero-pixie.webp" alt="Pixie, pink-haired bomber in a bunny hat"></div><div class="bar"><b>Pixie</b><span>Bomber</span></div><p>Bunny Bombs and chain reactions. Everything near Pixie explodes.</p></article>
-      <article class="member" style="--hc:#18b8ee"><div class="pic full"><img src="img/hero-brute.webp" alt="Brute, masked blue-skinned tank with a shotgun"></div><div class="bar"><b>Brute</b><span>Tank</span></div><p>A shielded Juggernaut charge and an aura that protects the squad.</p></article>
-      <article class="member" style="--hc:#8a3cf0"><div class="pic full"><img src="img/hero-yoru.webp" alt="Yoru, white-haired rift sniper in a long coat"></div><div class="bar"><b>Yoru</b><span>Rift sniper</span></div><p>Opens a Vortex that drags enemies in, then picks them off.</p></article>
-      <article class="member" style="--hc:#22d3c5"><div class="pic full"><img src="img/hero-zara.webp" alt="Zara, combat DJ with headphones and visor"></div><div class="bar"><b>Zara</b><span>Combat DJ</span></div><p>Speaker totems alternate damage beats and healing beats.</p></article>
-      <article class="member" style="--hc:#f5c518"><div class="pic full"><img src="img/hero-capy.webp" alt="Capy, a capybara in an engineering mech"></div><div class="bar"><b>Capy</b><span>Engineer</span></div><p>Deploys a sentry and grows it into a weapons platform with scrap.</p></article>
+  <section class="playband" id="play" aria-labelledby="play-h">
+    <div class="pb-text">
+      <span class="eyebrow">Playtest</span>
+      <h2 id="play-h">Play it now.</h2>
+      <p>The playtest runs right in your browser, with no install. Best on desktop, with friends if you can.</p>
+      <a class="btn pink" href="play/">Play the playtest ▶</a>
     </div>
   </section>
 
@@ -271,10 +262,26 @@ footer a{color:var(--pink)}
           <div class="row"><dt>Release</dt><dd>To be announced</dd></div>
           <div class="row"><dt>Price</dt><dd>To be announced</dd></div>
           <div class="row"><dt>Engine</dt><dd>Unity · Photon Quantum</dd></div>
+          <div class="row"><dt>Playtest</dt><dd><a href="play/" style="color:var(--pink-ink);font-weight:600">Play in your browser ▶</a></dd></div>
           <div class="row"><dt>Steam page</dt><dd>Coming soon</dd></div>
-          <div class="row"><dt>Community</dt><dd><a href="https://discord.gg/aafnJQq6Vx" target="_blank" rel="noopener" style="color:var(--pink)">Discord ↗</a></dd></div>
+          <div class="row"><dt>Community</dt><dd><a href="https://discord.gg/aafnJQq6Vx" target="_blank" rel="noopener" style="color:var(--pink-ink);font-weight:600">Discord ↗</a></dd></div>
         </dl>
       </div>
+    </div>
+  </section>
+
+  <section class="sec" id="characters" aria-labelledby="crew-h">
+    <div class="sec-head">
+      <div><span class="eyebrow">The crew</span><h2 id="crew-h">Six misfits. One rift.</h2></div>
+      <p>Pick your favorite, or bring the whole squad.</p>
+    </div>
+    <div class="crew">
+      <article class="member" style="--hc:#ff8a1f"><div class="pic full"><img src="img/hero-max.webp" alt="Max, orange-haired gunslinger"></div><div class="bar"><b>Max</b><span>Gunslinger</span></div><p>Goes into a Rage and out-shoots everyone in the room.</p></article>
+      <article class="member" style="--hc:#ff2d8f"><div class="pic full"><img src="img/hero-pixie.webp" alt="Pixie, pink-haired bomber in a bunny hat"></div><div class="bar"><b>Pixie</b><span>Bomber</span></div><p>Bunny Bombs and chain reactions. Everything near Pixie explodes.</p></article>
+      <article class="member" style="--hc:#18b8ee"><div class="pic full"><img src="img/hero-brute.webp" alt="Brute, masked blue-skinned tank with a shotgun"></div><div class="bar"><b>Brute</b><span>Tank</span></div><p>A shielded Juggernaut charge and an aura that protects the squad.</p></article>
+      <article class="member" style="--hc:#8a3cf0"><div class="pic full"><img src="img/hero-yoru.webp" alt="Yoru, white-haired rift sniper in a long coat"></div><div class="bar"><b>Yoru</b><span>Rift sniper</span></div><p>Opens a Vortex that drags enemies in, then picks them off.</p></article>
+      <article class="member" style="--hc:#22d3c5"><div class="pic full"><img src="img/hero-zara.webp" alt="Zara, combat DJ with headphones and visor"></div><div class="bar"><b>Zara</b><span>Combat DJ</span></div><p>Speaker totems alternate damage beats and healing beats.</p></article>
+      <article class="member" style="--hc:#f5c518"><div class="pic full"><img src="img/hero-capy.webp" alt="Capy, a capybara in an engineering mech"></div><div class="bar"><b>Capy</b><span>Engineer</span></div><p>Deploys a sentry and grows it into a weapons platform with scrap.</p></article>
     </div>
   </section>
 
@@ -299,7 +306,7 @@ footer a{color:var(--pink)}
   <section class="sec" id="media" aria-labelledby="media-h">
     <div class="sec-head">
       <div><span class="eyebrow">Media</span><h2 id="media-h">Key art.</h2></div>
-      <p>Free to use in coverage of Rift Jumpers. Open any image at full size to save it.</p>
+      <p>Free to use in coverage of Rift Jumpers. Open any image at full size, or <a href="rift-jumpers-press-kit.zip" download style="color:var(--pink-ink);font-weight:700">get everything in one zip · 39 MB ↓</a></p>
     </div>
     <div class="gallery">
       <figure class="w6"><a class="f" href="img/squad-six.webp" target="_blank" rel="noopener"><img src="img/squad-six.webp" alt="All six heroes in an action group shot" loading="lazy"></a><figcaption>Squad · all six heroes <a href="img/squad-six.webp" target="_blank" rel="noopener">1536×1024 ↗</a></figcaption></figure>
@@ -339,7 +346,7 @@ footer a{color:var(--pink)}
       <div class="mark" role="img" aria-label="Pacha Games logo"><svg><use href="#pacha"/></svg><b>PACHA</b><small>GAMES</small></div>
       <div class="lines">
         <p>Pacha Games is the solo studio of Vinicius Pacha, focused on super high-performance multiplayer games with style. Also behind Jelly Dash, a web multiplayer game with 1M+ plays on CrazyGames.</p>
-        <p><b>Press, creators and festivals:</b> <a href="https://discord.gg/aafnJQq6Vx" target="_blank" rel="noopener" style="color:var(--pink)">reach us on Discord ↗</a></p>
+        <p><b>Press, creators and festivals:</b> <a href="https://discord.gg/aafnJQq6Vx" target="_blank" rel="noopener" style="color:var(--pink-ink);font-weight:600">reach us on Discord ↗</a></p>
         <p><b>Review keys:</b> available on request once the store page is live.</p>
       </div>
     </div>
@@ -347,7 +354,18 @@ footer a{color:var(--pink)}
 </main>
 
 <footer>
-  <div class="wrap cap"><span>© 2026 Pacha Games · Rift Jumpers press kit</span><a href="#contact">Contact ↗</a></div>
+  <div class="wrap cap"><span>© 2026 <a href="../" style="color:inherit;text-decoration:underline">Pacha Games</a> · Rift Jumpers press kit</span><a href="#contact">Contact ↑</a></div>
 </footer>
+<script>
+document.querySelector(".trailer").addEventListener("click", function (e) {
+  e.preventDefault();
+  var f = document.createElement("iframe");
+  f.src = "https://www.youtube-nocookie.com/embed/nVJmuOhg51Q?autoplay=1&rel=0";
+  f.title = "Rift Jumpers trailer";
+  f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+  f.style.cssText = "width:100%;aspect-ratio:16/9;border:0;display:block";
+  this.replaceWith(f);
+});
+</script>
 </body>
 </html>

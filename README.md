@@ -1,3 +1,7 @@
 # pachagames.com
 
-Static site served by GitHub Pages. The Rift Jumpers press kit is in `riftjumpers/` (plain HTML, no build step). The root page redirects to it for now.
+Static site served by GitHub Pages, plain HTML with no build step.
+
+- `index.html`: studio home page
+- `riftjumpers/`: Rift Jumpers press kit
+- `riftjumpers/play/`: playtest page, using the official itch embed

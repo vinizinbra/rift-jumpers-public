@@ -2,11 +2,169 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Pacha Games</title>
-<meta http-equiv="refresh" content="0; url=/riftjumpers/">
-<link rel="canonical" href="https://pachagames.com/riftjumpers/">
-<script>location.replace("/riftjumpers/");</script>
+<meta name="description" content="Pacha Games makes super high-performance multiplayer games with style. Now building Rift Jumpers, a 1-4 player co-op survivors roguelite.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pacha Games">
+<meta property="og:description" content="Super high-performance multiplayer games. With style.">
+<meta property="og:url" content="https://pachagames.com/">
+<meta property="og:image" content="https://pachagames.com/riftjumpers/img/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://pachagames.com/">
+<link rel="icon" href="assets/pacha-games-logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,100,400;0,100,500;0,100,700;0,125,800;0,125,900;1,125,900&display=swap">
+<style>
+/* Studio home: dark first screen built around the Pacha play mark and one Steam-style pink label, then a light games section. */
+:root{--ink:#0a0f24;--ink2:#141a36;--paper:#f6f5f8;--line:#e3e2ea;--muted:#5d6076;--pale:#b9bbca;--pink:#FD3971;--pink-deep:#D81B55;--pink-dark:#c91449;--cyan:#04D3FB;--sans:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;--gutter:clamp(20px,5vw,64px);color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:#fff;font:400 17px/1.55 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+h1,h2,h3,p{margin:0}
+.wrap{max-width:1280px;margin:0 auto;padding-inline:var(--gutter)}
+
+.top{position:absolute;inset:0 0 auto;z-index:3}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:18px}
+.top img{height:64px;width:auto;display:block;filter:invert(1)}
+.top nav{display:flex;gap:clamp(18px,3vw,34px)}
+.top nav a{font:800 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;padding:8px 0}
+.top nav a:hover{color:var(--pink)}
+
+.hero{position:relative;min-height:min(100svh,900px);display:flex;align-items:center;overflow:hidden;background:radial-gradient(90% 90% at 88% 40%,#2a1450 0,var(--ink) 62%)}
+.speed{position:absolute;inset:-20% -10%;transform:rotate(-16deg);background:repeating-linear-gradient(0deg,transparent 0 46px,rgba(255,255,255,.035) 46px 48px,transparent 48px 118px,rgba(253,57,113,.1) 118px 121px,transparent 121px 190px);pointer-events:none}
+.mark{position:absolute;right:clamp(-150px,-7vw,-30px);top:50%;width:clamp(380px,43vw,720px);translate:0 -50%;color:var(--pink);pointer-events:none}
+.mark svg{display:block;width:100%;height:auto;filter:drop-shadow(18px 18px 0 rgba(4,211,251,.18))}
+.dots{position:absolute;right:0;bottom:0;width:60%;height:60%;background-image:radial-gradient(circle,rgba(255,255,255,.2) 2.6px,transparent 3px);background-size:17px 17px;-webkit-mask-image:linear-gradient(315deg,#000,transparent 62%);mask-image:linear-gradient(315deg,#000,transparent 62%);pointer-events:none}
+.copy{position:relative;z-index:2;display:grid;gap:30px;padding-block:120px 80px;max-width:760px}
+h1{font-weight:900;font-stretch:125%;font-size:clamp(2.2rem,5vw,4.4rem);line-height:.97;letter-spacing:-.025em;text-transform:uppercase;text-wrap:balance}
+.label{display:inline-block;position:relative;margin-top:.22em;font-style:italic;font-size:1.08em;letter-spacing:-.015em;color:#fff;padding:.13em .62em .17em .42em;isolation:isolate;text-shadow:.05em .05em 0 var(--ink)}
+.label::before{content:"";position:absolute;inset:0;z-index:-1;clip-path:polygon(3.5% 0,100% 0,96.5% 100%,0 100%);background:radial-gradient(circle,rgba(255,255,255,.34) 1.7px,transparent 2.1px) 0 0/10px 10px,repeating-linear-gradient(115deg,var(--pink) 0 16px,var(--pink-dark) 16px 32px)}
+.label::after{content:"";position:absolute;inset:0;z-index:-2;translate:.11em .13em;clip-path:polygon(3.5% 0,100% 0,96.5% 100%,0 100%);background:var(--cyan)}
+.lede{font-size:clamp(1.05rem,1.6vw,1.25rem);color:#dcdde6;max-width:44ch}
+.ctas{display:flex;flex-wrap:wrap;gap:14px}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:50px;padding:0 24px;font:800 13px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;border:2px solid currentColor;transition:translate .12s,box-shadow .12s,background .12s,color .12s}
+.btn:hover{translate:-2px -2px;box-shadow:4px 4px 0 currentColor}
+.btn.solid{background:var(--pink-deep);border-color:var(--pink-deep);color:#fff}
+.btn.solid:hover{box-shadow:4px 4px 0 var(--cyan)}
+
+.games{position:relative;background:var(--paper);color:var(--ink);padding-block:clamp(64px,8vw,104px);clip-path:polygon(0 clamp(20px,4vw,64px),100% 0,100% 100%,0 100%);margin-top:clamp(-64px,-4vw,-20px);z-index:2}
+.eyebrow{font:800 12px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--pink-deep)}
+h2{font-weight:900;font-stretch:125%;font-size:clamp(2rem,4.6vw,3.5rem);line-height:1;letter-spacing:-.025em;text-transform:uppercase;margin-top:12px}
+.feature{position:relative;margin-top:40px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);background:var(--ink) url("riftjumpers/img/play-background.jpg") center/cover;color:#fff;min-height:500px;overflow:hidden}
+.feature::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,15,36,.94) 0,rgba(10,15,36,.8) 46%,rgba(10,15,36,.08) 80%)}
+.feature .text{position:relative;display:grid;align-content:center;gap:20px;padding:clamp(28px,4.5vw,60px)}
+.feature .logo{width:min(100%,340px);height:auto;display:block}
+.status{font:800 11.5px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--cyan)}
+.feature p{color:#e3e4ec;max-width:46ch}
+.feature .art{position:relative;align-self:end;justify-self:end;width:min(112%,620px);height:auto;display:block;margin:24px -2% -3% 0;filter:drop-shadow(0 18px 30px rgba(10,15,36,.5))}
+.second{margin-top:18px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);background:#fff;border:1px solid var(--line)}
+.second img{width:100%;height:100%;min-height:240px;object-fit:cover;display:block}
+.second .text{display:grid;align-content:center;gap:12px;padding:clamp(24px,4vw,48px)}
+h3{font-weight:900;font-stretch:125%;font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1;letter-spacing:-.02em;text-transform:uppercase}
+.second p{color:var(--muted)}
+.facts{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.facts li{font:700 12px/1 var(--sans);letter-spacing:.04em;padding:9px 12px;background:var(--paper);border:1px solid var(--line)}
+
+.contact{padding-block:clamp(64px,8vw,100px) 40px}
+.contact .row{display:flex;flex-wrap:wrap;gap:28px;align-items:end;justify-content:space-between}
+.contact h2{margin-top:12px;text-wrap:balance}
+footer{margin-top:64px;padding-top:20px;border-top:1px solid rgba(255,255,255,.14);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;font-size:13px;color:var(--pale)}
+
+@media (prefers-reduced-motion:no-preference){
+  .rise{opacity:0;animation:rise .55s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:var(--d,0s)}
+  @keyframes rise{from{opacity:0;translate:0 18px}to{opacity:1;translate:0 0}}
+  .label{animation:slam .42s cubic-bezier(.2,1.3,.4,1) .3s backwards}
+  @keyframes slam{from{opacity:0;transform:translateX(-46px) skewX(-14deg)}to{opacity:1;transform:none}}
+  .speed{animation:drift 22s linear infinite}
+  @keyframes drift{to{background-position:0 380px}}
+}
+@media (max-width:860px){
+  .mark{opacity:.3;right:-34%;width:118vw}
+  .top img{height:54px}
+  .feature{grid-template-columns:minmax(0,1fr)}
+  .feature::before{background:linear-gradient(180deg,rgba(10,15,36,.94) 0,rgba(10,15,36,.82) 62%,rgba(10,15,36,.2) 100%)}
+  .feature .art{width:min(92%,460px);justify-self:center;margin:0 auto -3%}
+  .second{grid-template-columns:minmax(0,1fr)}
+  .second img{aspect-ratio:16/9;height:auto;min-height:0}
+}
+</style>
 </head>
-<body><p><a href="/riftjumpers/">Rift Jumpers press kit</a></p></body>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a href="./" aria-label="Pacha Games home"><img src="assets/pacha-games-logo.png" alt="Pacha Games" width="512" height="512"></a>
+    <nav aria-label="Main"><a href="#games">Games</a><a href="riftjumpers/">Press</a><a href="#contact">Contact</a></nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="speed"></div>
+    <div class="dots"></div>
+    <div class="mark" aria-hidden="true"><svg viewBox="180 130 960 1040"><path fill="currentColor" d="M330 150C600 160 850 230 1000 340C1160 460 1160 700 1000 800C860 890 700 920 560 970L530 990L530 1100Q530 1140 490 1140L240 1150Q200 1150 200 1110L200 510Q200 460 250 475L310 510Q335 525 335 555L335 840Q335 870 365 855L740 660Q770 640 740 620L320 380Q280 360 280 320L280 200Q280 150 330 150Z"/></svg></div>
+    <div class="wrap" style="width:100%">
+      <div class="copy">
+        <h1 class="rise">Super high-performance multiplayer games. <span class="label">With style.</span></h1>
+        <p class="lede rise" style="--d:.18s">Pacha Games is the solo studio of Vinicius Pacha. Now building Rift Jumpers.</p>
+        <div class="ctas rise" style="--d:.28s">
+          <a class="btn solid" href="riftjumpers/play/">Play Rift Jumpers ▶</a>
+          <a class="btn" href="#games">Our games ↓</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="games" id="games" aria-labelledby="games-h">
+    <div class="wrap">
+      <span class="eyebrow">Games</span>
+      <h2 id="games-h">What we’re making.</h2>
+
+      <article class="feature">
+        <div class="text">
+          <img class="logo" src="riftjumpers/logos/rift-jumpers-logo-white.svg" alt="Rift Jumpers" width="2000" height="1839" style="width:min(100%,250px)">
+          <span class="status">In development · Playtest open</span>
+          <p>A top-down co-op survivors roguelite for 1–4 players. Explore procedural maps, stack perks on ridiculous guns, survive the horde and take down the boss.</p>
+          <div class="ctas">
+            <a class="btn solid" href="riftjumpers/play/">Play now ▶</a>
+            <a class="btn" href="riftjumpers/">Press kit</a>
+          </div>
+        </div>
+        <img class="art" src="riftjumpers/img/trio-sticker-wide.webp" alt="Brute, Max and Pixie from Rift Jumpers" width="1448" height="1086" loading="lazy">
+      </article>
+
+      <article class="second">
+        <img src="assets/jelly-dash.jpg" alt="Jelly Dash key art" width="1280" height="720" loading="lazy">
+        <div class="text">
+          <h3>Jelly Dash</h3>
+          <p>A multiplayer game built for the web.</p>
+          <ul class="facts">
+            <li>1M+ plays on CrazyGames</li>
+            <li>1st place, CrazyGames multiplayer web game jam</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="contact" id="contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <div class="row">
+        <div>
+          <span class="eyebrow" style="color:var(--pink)">Contact</span>
+          <h2 id="contact-h">Come play with us.</h2>
+        </div>
+        <div class="ctas">
+          <a class="btn solid" href="https://discord.gg/aafnJQq6Vx" target="_blank" rel="noopener">Join the Discord ↗</a>
+          <a class="btn" href="riftjumpers/#contact">Press &amp; creators</a>
+        </div>
+      </div>
+      <footer><span>© 2026 Pacha Games</span><a href="riftjumpers/">Rift Jumpers press kit</a></footer>
+    </div>
+  </section>
+</main>
+</body>
 </html>
