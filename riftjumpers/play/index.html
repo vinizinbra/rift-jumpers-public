@@ -2,12 +2,76 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Play Rift Jumpers</title>
 <meta name="robots" content="noindex,nofollow">
-<meta name="referrer" content="no-referrer">
-<meta http-equiv="refresh" content="0; url=https://vinizinbra.itch.io/rift-jumpers-playtest?secret=lrMKw70Dl2JN6OmQgEWowZIbgc">
-<script>location.replace("https://vinizinbra.itch.io/rift-jumpers-playtest?secret=lrMKw70Dl2JN6OmQgEWowZIbgc");</script>
+<link rel="icon" href="../logos/rift-jumpers-mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800;900&display=swap">
+<style>
+:root{--bg:#0a0f24;--ink:#fff;--muted:#b9bbca;--pink:#FD3971;--bar:52px;--ratio:calc(1386 / 788);color-scheme:dark}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--ink);font:600 14px/1.4 "Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;display:flex;flex-direction:column;overflow:hidden}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
+.bar{flex:none;height:var(--bar);display:flex;align-items:center;gap:16px;padding:0 max(16px,env(safe-area-inset-right)) 0 max(16px,env(safe-area-inset-left))}
+.bar img{height:30px;width:auto;display:block}
+.bar .right{margin-left:auto;display:flex;align-items:center;gap:18px}
+.bar a.link,.bar button{font:800 11.5px/1 inherit;font-family:inherit;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);background:none;border:0;padding:8px 0;cursor:pointer}
+.bar a.link:hover,.bar button:hover{color:var(--pink)}
+.bar button[hidden]{display:none}
+main{flex:1;min-height:0;display:grid;place-items:center;padding:0 max(0px,env(safe-area-inset-right)) env(safe-area-inset-bottom) max(0px,env(safe-area-inset-left))}
+.stage{position:relative;width:min(100vw,calc((100dvh - var(--bar)) * var(--ratio)));aspect-ratio:1386/788;background:#000;overflow:hidden}
+.stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.stage:fullscreen{width:100%;height:100%;aspect-ratio:auto}
+.gate{position:absolute;inset:0;width:100%;height:100%;border:0;padding:0;cursor:pointer;color:#fff;font-family:inherit;background:#0a0f24 url("../img/keyart-dark.webp") center/cover no-repeat;display:grid;place-items:center;align-content:center;gap:16px}
+.gate::before{content:"";position:absolute;inset:0;background:rgba(10,15,36,.55);transition:background .15s}
+.gate:hover::before{background:rgba(10,15,36,.4)}
+.gate>*{position:relative}
+.gate .disc{width:clamp(64px,10vmin,96px);aspect-ratio:1;border-radius:50%;background:var(--pink);display:grid;place-items:center;box-shadow:0 10px 40px rgba(253,57,113,.45)}
+.gate .disc svg{width:38%;margin-left:6%}
+.gate b{font-size:clamp(1.3rem,3.2vmin,2rem);font-weight:900;letter-spacing:-.01em;text-transform:uppercase}
+.gate small{font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#dfe0e8}
+</style>
 </head>
-<body><p><a href="https://vinizinbra.itch.io/rift-jumpers-playtest?secret=lrMKw70Dl2JN6OmQgEWowZIbgc" rel="noreferrer">Play Rift Jumpers</a></p></body>
+<body>
+<header class="bar">
+  <a href="../"><img src="../logos/rift-jumpers-logo-white.svg" alt="Rift Jumpers press kit" style="height:40px"></a>
+  <div class="right">
+    <button id="fs" type="button" hidden>Fullscreen ⛶</button>
+    <a class="link" href="../">Press kit</a>
+  </div>
+</header>
+<main>
+  <div class="stage" id="stage">
+    <button class="gate" id="gate" type="button">
+      <span class="disc"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M6 4l14 8-14 8z"/></svg></span>
+      <b>Play the playtest</b>
+      <small>Runs in your browser · Best on desktop</small>
+    </button>
+  </div>
+</main>
+<script>
+// The current itch build. Each `butler push` may change this path, so keep it in one place.
+var GAME_URL = "https://html-classic.itch.zone/html/20262782-2299157/index.html";
+var stage = document.getElementById("stage"), gate = document.getElementById("gate"), fs = document.getElementById("fs");
+function start() {
+  var f = document.createElement("iframe");
+  f.src = GAME_URL;
+  f.title = "Rift Jumpers";
+  f.allow = "autoplay; fullscreen *; gamepad; cross-origin-isolated; web-share";
+  f.setAttribute("allowfullscreen", "true");
+  f.scrolling = "no";
+  stage.appendChild(f);
+  gate.remove();
+  f.focus();
+  if (stage.requestFullscreen) fs.hidden = false;
+}
+gate.addEventListener("click", start);
+fs.addEventListener("click", function () { stage.requestFullscreen(); });
+if (location.hash === "#start") start();
+</script>
+</body>
 </html>
