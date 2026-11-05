@@ -72,22 +72,14 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 @media (max-width:420px){.nav .btn{padding:11px 14px}}
 
 /* Hero */
-.hero{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;justify-items:center;text-align:center;padding-block:0}
-.hero .copy{display:grid;gap:14px;justify-items:center;padding-block:clamp(16px,2.4vw,28px) 16px}
-.hero h1{font-size:clamp(2.3rem,4.4vw,3.8rem)}
-.hero h1 br{display:none}
-.hero h1 span{margin-left:.24em}
-@media (max-width:700px){.hero h1 br{display:inline}.hero h1 span{margin-left:0}}
+.hero{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;justify-items:center;text-align:center;padding-block:24px 0}
+.hero .copy{display:grid;gap:24px;justify-items:center;padding-block:0 20px}
+.hero h1{font-size:clamp(2.5rem,5.2vw,4.4rem)}
 .hero h1 span{color:var(--pink)}
-.hero p{color:var(--muted);font-size:1.1rem;max-width:74ch}
+.hero p{color:var(--muted);font-size:1.15rem;max-width:52ch}
 .ctas{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-.art{position:relative;overflow:hidden;background:#100b1e}
-/* The art always shows whole: on wide or short screens it stays centered, and a blurred copy fills the sides. */
-.art::before{content:"";position:absolute;inset:-40px;background:url("img/keyart-trio-action.jpg") center/cover;filter:blur(26px) brightness(.5)}
-.art-in{position:relative;width:min(100%,max(568px,calc((100vh - 335px) * 1.7768)));margin:0 auto;line-height:0}
-@media (max-width:1180px){.art-in{width:min(100%,max(480px,calc((100vh - 385px) * 1.7768)))}}
-.art-main{display:block;width:100%;height:auto}
-.art-logo{position:absolute;left:3%;bottom:4%;width:auto;height:30%;filter:drop-shadow(0 4px 0 rgba(10,15,36,.8))}
+.hero .art{order:-1;width:min(100%,560px)}
+.hero .art img{width:100%;height:auto;max-height:40vh;object-fit:contain;display:block}
 .stats{display:flex;flex-wrap:wrap;justify-content:center;text-align:center;border-top:1px solid var(--line);margin-top:8px}
 .stat{padding:20px 36px 4px;border-right:1px solid var(--line);display:grid;gap:4px}
 .stat:last-child{border-right:0}
@@ -211,10 +203,9 @@ footer a{color:var(--pink-ink)}
   </div>
 </nav>
 
-<div class="art"><div class="art-in"><img class="art-main" src="img/keyart-trio-action.jpg" alt="Max, Brute and Pixie charge out of a hangar with guns and a skull bomb" width="1672" height="941"><img class="art-logo" src="logos/rift-jumpers-logo-white.svg" alt="" width="2000" height="1839"></div></div>
-
 <main class="wrap" id="top">
   <header class="hero">
+    <div class="art"><img src="img/trio-sticker-wide.webp" alt="Brute, Max and Pixie striking an action pose"></div>
     <div class="copy">
       <span class="eyebrow">Official press kit</span>
       <h1>Bold heroes.<br><span>Broken worlds.</span></h1>
