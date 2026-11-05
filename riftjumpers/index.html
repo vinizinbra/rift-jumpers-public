@@ -49,14 +49,18 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .nav .wrap{display:flex;align-items:center;gap:28px;padding-block:12px}
 .brand img{height:38px;width:auto;display:block}
 @media (max-width:420px){.brand img{height:30px}}
-.logos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-@media (max-width:900px){.logos{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.logo-card{display:grid;gap:8px;min-width:0;margin:0}
-.logo-card a.f{display:block;aspect-ratio:4/3;border:1px solid var(--line);padding:22px;min-width:0;overflow:hidden}
-.logo-card.span2 a.f{aspect-ratio:auto;height:calc(100% - 26px);min-height:120px}
-.logo-card a.f.dark{background:#0a0f24;border-color:#0a0f24}
-.logo-card img{width:100%;height:100%;object-fit:contain;display:block}
-.logo-card.span2{grid-column:span 2}
+.logos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 22px}
+@media (max-width:760px){.logos{grid-template-columns:minmax(0,1fr)}}
+.logo-pair{display:grid;gap:9px;min-width:0;margin:0}
+.panels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.panel{position:relative;aspect-ratio:4/3;min-width:0}
+.panel.on-white{background:#fff;border:1px solid var(--line);border-right:0}
+.panel.on-dark{background:#0a0f24}
+.panel img{position:absolute;inset:clamp(12px,1.8vw,24px);width:calc(100% - 2 * clamp(12px,1.8vw,24px));height:calc(100% - 2 * clamp(12px,1.8vw,24px));object-fit:contain}
+.logo-pair figcaption{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 14px;letter-spacing:.08em}
+.logo-pair figcaption b{color:var(--ink);font-weight:800}
+.logo-pair .dl{display:flex;flex-wrap:wrap;gap:3px 10px;align-items:baseline}
+.logo-pair .dl span:not(:first-child){margin-left:6px}
 .links{display:flex;gap:24px;margin-left:auto}
 .links a,.btn{white-space:nowrap}
 @media (max-width:1240px){.nav-kit{display:none}}
@@ -229,7 +233,7 @@ footer a{color:var(--pink-ink)}
       <p>A top-down co-op survivors roguelite for 1–4 players. Explore procedural maps, stack perks on ridiculous guns, survive the horde and take down the boss.</p>
       <div class="ctas">
         <a class="btn pink" href="play/">Play the playtest ▶</a>
-        <a class="btn" href="rift-jumpers-press-kit.zip" download>Download press kit · 37 MB ↓</a>
+        <a class="btn" href="rift-jumpers-press-kit.zip" download>Download press kit · 38 MB ↓</a>
       </div>
     </div>
   </header>
@@ -336,7 +340,7 @@ footer a{color:var(--pink-ink)}
   <section class="sec" id="media" aria-labelledby="media-h">
     <div class="sec-head">
       <div><span class="eyebrow">Media</span><h2 id="media-h">Key art.</h2></div>
-      <p>Free to use in coverage of Rift Jumpers. Open any image at full size, or <a href="rift-jumpers-press-kit.zip" download style="color:var(--pink-ink);font-weight:700">get everything in one zip · 37 MB ↓</a></p>
+      <p>Free to use in coverage of Rift Jumpers. Open any image at full size, or <a href="rift-jumpers-press-kit.zip" download style="color:var(--pink-ink);font-weight:700">get everything in one zip · 38 MB ↓</a></p>
     </div>
     <div class="gallery">
       <figure class="w12"><a class="f" href="img/keyart-trio-action.jpg" target="_blank" rel="noopener"><img src="img/keyart-trio-action.jpg" alt="Max, Brute and Pixie charge out of a hangar, with a skull notebook flying past" width="1672" height="941" loading="lazy"></a><figcaption>Key art · Max, Brute, Pixie <a href="img/keyart-trio-action.jpg" target="_blank" rel="noopener">1672×941 ↗</a></figcaption></figure>
@@ -352,16 +356,41 @@ footer a{color:var(--pink-ink)}
   <section class="sec" id="logos" aria-labelledby="logos-h">
     <div class="sec-head">
       <div><span class="eyebrow">Logos</span><h2 id="logos-h">Brand marks.</h2></div>
-      <p>Vector SVG files. They scale to any size without losing quality.</p>
+      <p>Every logo for white and dark backgrounds, as PNG or vector SVG. The SVGs have transparent backgrounds.</p>
     </div>
     <div class="logos">
-      <figure class="logo-card"><a class="f" href="logos/rift-jumpers-logo.svg" target="_blank" rel="noopener"><img src="logos/rift-jumpers-logo.svg" alt="Rift Jumpers primary logo"></a><figcaption>Primary logo <a href="logos/rift-jumpers-logo.svg" target="_blank" rel="noopener">SVG ↗</a></figcaption></figure>
-      <figure class="logo-card"><a class="f dark" href="logos/rift-jumpers-logo-white.svg" target="_blank" rel="noopener"><img src="logos/rift-jumpers-logo-white.svg" alt="Rift Jumpers logo for dark backgrounds"></a><figcaption>Logo · on dark <a href="logos/rift-jumpers-logo-white.svg" target="_blank" rel="noopener">SVG ↗</a></figcaption></figure>
-      <figure class="logo-card"><a class="f" href="logos/rift-jumpers-app-icon.svg" target="_blank" rel="noopener"><img src="logos/rift-jumpers-app-icon.svg" alt="Rift Jumpers app icon"></a><figcaption>App icon <a href="logos/rift-jumpers-app-icon.svg" target="_blank" rel="noopener">SVG ↗</a></figcaption></figure>
-      <figure class="logo-card"><a class="f" href="logos/rift-jumpers-mark-mono.svg" target="_blank" rel="noopener"><img src="logos/rift-jumpers-mark-mono.svg" alt="Rift Jumpers crystal mark, single color"></a><figcaption>Mark · mono <a href="logos/rift-jumpers-mark-mono.svg" target="_blank" rel="noopener">SVG ↗</a></figcaption></figure>
-      <figure class="logo-card span2"><a class="f" href="logos/rift-jumpers-logo-horizontal.svg" target="_blank" rel="noopener"><img src="logos/rift-jumpers-logo-horizontal.svg" alt="Rift Jumpers horizontal logo"></a><figcaption>Horizontal logo <a href="logos/rift-jumpers-logo-horizontal.svg" target="_blank" rel="noopener">SVG ↗</a></figcaption></figure>
-      <figure class="logo-card"><a class="f" href="logos/rift-jumpers-mark.svg" target="_blank" rel="noopener"><img src="logos/rift-jumpers-mark.svg" alt="Rift Jumpers crystal mark"></a><figcaption>Mark · color <a href="logos/rift-jumpers-mark.svg" target="_blank" rel="noopener">SVG ↗</a></figcaption></figure>
-      <figure class="logo-card"><a class="f" href="logos/rift-jumpers-wordmark.svg" target="_blank" rel="noopener"><img src="logos/rift-jumpers-wordmark.svg" alt="Rift Jumpers wordmark"></a><figcaption>Wordmark <a href="logos/rift-jumpers-wordmark.svg" target="_blank" rel="noopener">SVG ↗</a></figcaption></figure>
+      <figure class="logo-pair">
+        <div class="panels"><div class="panel on-white"><img src="logos/rift-jumpers-logo.svg" alt="Rift Jumpers primary logo on white" loading="lazy"></div><div class="panel on-dark"><img src="logos/rift-jumpers-logo-white.svg" alt="Rift Jumpers primary logo on dark" loading="lazy"></div></div>
+        <figcaption><b>Primary logo</b><span class="dl"><span>White bg</span><a href="logos/png/on-white/rift-jumpers-logo-on-white.png" download>PNG ↓</a><a href="logos/rift-jumpers-logo.svg" target="_blank" rel="noopener">SVG ↗</a><span>Dark bg</span><a href="logos/png/on-dark/rift-jumpers-logo-on-dark.png" download>PNG ↓</a><a href="logos/rift-jumpers-logo-white.svg" target="_blank" rel="noopener">SVG ↗</a></span></figcaption>
+      </figure>
+      <figure class="logo-pair">
+        <div class="panels"><div class="panel on-white"><img src="logos/rift-jumpers-logo-horizontal.svg" alt="Rift Jumpers horizontal logo on white" loading="lazy"></div><div class="panel on-dark"><img src="logos/rift-jumpers-logo-horizontal-white.svg" alt="Rift Jumpers horizontal logo on dark" loading="lazy"></div></div>
+        <figcaption><b>Horizontal logo</b><span class="dl"><span>White bg</span><a href="logos/png/on-white/rift-jumpers-logo-horizontal-on-white.png" download>PNG ↓</a><a href="logos/rift-jumpers-logo-horizontal.svg" target="_blank" rel="noopener">SVG ↗</a><span>Dark bg</span><a href="logos/png/on-dark/rift-jumpers-logo-horizontal-on-dark.png" download>PNG ↓</a><a href="logos/rift-jumpers-logo-horizontal-white.svg" target="_blank" rel="noopener">SVG ↗</a></span></figcaption>
+      </figure>
+      <figure class="logo-pair">
+        <div class="panels"><div class="panel on-white"><img src="logos/rift-jumpers-logo-horizontal-simple.svg" alt="Rift Jumpers horizontal · simple heart on white" loading="lazy"></div><div class="panel on-dark"><img src="logos/rift-jumpers-logo-horizontal-simple-white.svg" alt="Rift Jumpers horizontal · simple heart on dark" loading="lazy"></div></div>
+        <figcaption><b>Horizontal · simple heart</b><span class="dl"><span>White bg</span><a href="logos/png/on-white/rift-jumpers-logo-horizontal-simple-on-white.png" download>PNG ↓</a><a href="logos/rift-jumpers-logo-horizontal-simple.svg" target="_blank" rel="noopener">SVG ↗</a><span>Dark bg</span><a href="logos/png/on-dark/rift-jumpers-logo-horizontal-simple-on-dark.png" download>PNG ↓</a><a href="logos/rift-jumpers-logo-horizontal-simple-white.svg" target="_blank" rel="noopener">SVG ↗</a></span></figcaption>
+      </figure>
+      <figure class="logo-pair">
+        <div class="panels"><div class="panel on-white"><img src="logos/rift-jumpers-wordmark.svg" alt="Rift Jumpers name only on white" loading="lazy"></div><div class="panel on-dark"><img src="logos/rift-jumpers-wordmark-white.svg" alt="Rift Jumpers name only on dark" loading="lazy"></div></div>
+        <figcaption><b>Name only</b><span class="dl"><span>White bg</span><a href="logos/png/on-white/rift-jumpers-wordmark-on-white.png" download>PNG ↓</a><a href="logos/rift-jumpers-wordmark.svg" target="_blank" rel="noopener">SVG ↗</a><span>Dark bg</span><a href="logos/png/on-dark/rift-jumpers-wordmark-on-dark.png" download>PNG ↓</a><a href="logos/rift-jumpers-wordmark-white.svg" target="_blank" rel="noopener">SVG ↗</a></span></figcaption>
+      </figure>
+      <figure class="logo-pair">
+        <div class="panels"><div class="panel on-white"><img src="logos/rift-jumpers-mark.svg" alt="Rift Jumpers heart on white" loading="lazy"></div><div class="panel on-dark"><img src="logos/rift-jumpers-mark-on-dark.svg" alt="Rift Jumpers heart on dark" loading="lazy"></div></div>
+        <figcaption><b>Heart</b><span class="dl"><span>White bg</span><a href="logos/png/on-white/rift-jumpers-heart-on-white.png" download>PNG ↓</a><a href="logos/rift-jumpers-mark.svg" target="_blank" rel="noopener">SVG ↗</a><span>Dark bg</span><a href="logos/png/on-dark/rift-jumpers-heart-on-dark.png" download>PNG ↓</a><a href="logos/rift-jumpers-mark-on-dark.svg" target="_blank" rel="noopener">SVG ↗</a></span></figcaption>
+      </figure>
+      <figure class="logo-pair">
+        <div class="panels"><div class="panel on-white"><img src="logos/rift-jumpers-mark-simple-on-white.svg" alt="Rift Jumpers heart · simple on white" loading="lazy"></div><div class="panel on-dark"><img src="logos/rift-jumpers-mark-simple.svg" alt="Rift Jumpers heart · simple on dark" loading="lazy"></div></div>
+        <figcaption><b>Heart · simple</b><span class="dl"><span>White bg</span><a href="logos/png/on-white/rift-jumpers-heart-simple-on-white.png" download>PNG ↓</a><a href="logos/rift-jumpers-mark-simple-on-white.svg" target="_blank" rel="noopener">SVG ↗</a><span>Dark bg</span><a href="logos/png/on-dark/rift-jumpers-heart-simple-on-dark.png" download>PNG ↓</a><a href="logos/rift-jumpers-mark-simple.svg" target="_blank" rel="noopener">SVG ↗</a></span></figcaption>
+      </figure>
+      <figure class="logo-pair">
+        <div class="panels"><div class="panel on-white"><img src="logos/rift-jumpers-mark-mono.svg" alt="Rift Jumpers heart · one color on white" loading="lazy"></div><div class="panel on-dark"><img src="logos/rift-jumpers-mark-white.svg" alt="Rift Jumpers heart · one color on dark" loading="lazy"></div></div>
+        <figcaption><b>Heart · one color</b><span class="dl"><span>White bg</span><a href="logos/png/on-white/rift-jumpers-heart-one-color-on-white.png" download>PNG ↓</a><a href="logos/rift-jumpers-mark-mono.svg" target="_blank" rel="noopener">SVG ↗</a><span>Dark bg</span><a href="logos/png/on-dark/rift-jumpers-heart-one-color-on-dark.png" download>PNG ↓</a><a href="logos/rift-jumpers-mark-white.svg" target="_blank" rel="noopener">SVG ↗</a></span></figcaption>
+      </figure>
+      <figure class="logo-pair">
+        <div class="panels"><div class="panel on-white"><img src="logos/rift-jumpers-app-icon.svg" alt="Rift Jumpers app icon on white" loading="lazy"></div><div class="panel on-dark"><img src="logos/rift-jumpers-app-icon.svg" alt="Rift Jumpers app icon on dark" loading="lazy"></div></div>
+        <figcaption><b>App icon</b><span class="dl"><a href="logos/png/rift-jumpers-app-icon.png" download>PNG ↓</a><a href="logos/rift-jumpers-app-icon.svg" target="_blank" rel="noopener">SVG ↗</a></span></figcaption>
+      </figure>
     </div>
   </section>
 
