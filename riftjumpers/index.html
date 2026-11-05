@@ -84,11 +84,12 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .art{position:relative;overflow:hidden;background:#100b1e}
 /* The same top band as the one-pager. The art always shows whole: past its width limit it stays centered, and a blurred copy fills the sides. */
 .art::before{content:"";position:absolute;inset:-40px;background:url("img/keyart-wide.jpg") center/cover;filter:blur(26px) brightness(.5)}
-.art-in{position:relative;width:min(100%,max(760px,calc((100vh - 335px) * 3)));margin:0 auto;line-height:0;container-type:inline-size}
-.art-in::after{content:"";position:absolute;inset:0 auto 0 0;width:38%;background:linear-gradient(90deg,rgba(17,9,46,.82) 0,rgba(17,9,46,.5) 50%,rgba(17,9,46,0) 100%);pointer-events:none}
-.art-main{display:block;width:100%;height:auto}
+.art-in{position:relative;width:min(100%,max(760px,calc((100vh - 335px) * 3.49)));margin:0 auto;line-height:0;container-type:inline-size}
+.art-in::after{content:"";position:absolute;inset:0 auto 0 0;width:43%;background:linear-gradient(90deg,rgba(17,9,46,.94) 0,rgba(17,9,46,.76) 48%,rgba(17,9,46,0) 100%);pointer-events:none}
+/* Trims the bottom of the art, below Max's knee, so the band stays short. */
+.art-main{display:block;width:100%;height:auto;aspect-ratio:2172/623;object-fit:cover;object-position:center top}
 .art-logo{position:absolute;z-index:1;left:2.5%;top:9%;width:20%;height:auto}
-.art-tag{position:absolute;z-index:1;left:2.5%;top:38%;margin:0;color:#FBF8FD;font:800 italic 2.65cqw/1.12 "Archivo",sans-serif;font-stretch:100%;text-shadow:.12em .12em 0 var(--pink)}
+.art-tag{position:absolute;z-index:1;left:2.5%;top:42%;margin:0;color:#FBF8FD;font:800 italic 2.65cqw/1.12 "Archivo",sans-serif;font-stretch:100%;text-shadow:.12em .12em 0 var(--pink)}
 .stats{display:flex;flex-wrap:wrap;justify-content:center;text-align:center;border-top:1px solid var(--line);margin-top:8px}
 .stat{padding:20px 36px 4px;border-right:1px solid var(--line);display:grid;gap:4px}
 .stat:last-child{border-right:0}

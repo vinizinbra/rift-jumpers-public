@@ -31,6 +31,8 @@ h1,h2,h3,p{margin:0}
 .bar nav{display:flex;gap:clamp(12px,2.4vw,24px)}
 .bar nav a{color:var(--ink);text-decoration:none;font:800 13px/1 var(--display);letter-spacing:.04em;text-transform:uppercase;padding:8px 0;white-space:nowrap}
 .bar nav a:hover{color:var(--cyan)}
+.area{display:inline-block;margin:clamp(14px,2vw,22px) 0 12px clamp(14px,3vw,0px);padding:8px 58px 9px 24px;font:800 italic clamp(1.25rem,2.6vw,1.7rem)/1.1 var(--display);text-transform:uppercase;text-shadow:2px 2px 0 #160C2E;clip-path:polygon(11px 0,100% 0,calc(100% - 11px) 100%,0 100%);background:url("sheet/label.png") right center/auto 100% no-repeat,var(--pink)}
+.area#pitch{margin-top:clamp(36px,5vw,60px)}
 .trailer{position:relative;display:block;width:100%;aspect-ratio:16/9;overflow:hidden;background:#000;border:0;padding:0;cursor:pointer}
 .trailer img{display:block;width:100%;height:100%;object-fit:cover;opacity:.78;transition:opacity .15s}
 .trailer:hover img{opacity:.6}
@@ -58,11 +60,13 @@ h1,h2,h3,p{margin:0}
 </header>
 
 <main class="col">
+  <h2 class="area" id="trailer">Trailer</h2>
   <button class="trailer" id="tr" type="button" aria-label="Play the Rift Jumpers trailer">
     <img src="img/trailer-cover.jpg" alt="">
     <span class="play"><span class="disc"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M6 4l14 8-14 8z"/></svg></span>Watch the trailer</span>
   </button>
 
+  <h2 class="area" id="pitch">Pitch</h2>
   <div class="sheet-box" id="box">
 <div class="sheet">
 <div style="position: relative; width: 794px; height: 1123px; overflow: hidden; background: #160C2E; color: #FBF8FD; font-family: 'Barlow Semi Condensed', Arial, sans-serif; font-size: 16px; font-weight: 600; line-height: 1.2">
@@ -70,8 +74,8 @@ h1,h2,h3,p{margin:0}
 <img src="sheet/background.jpg" alt="" style="position: absolute; left: 0px; top: 0px; width: 794px; height: 1123px; object-fit: cover">
 
 <div style="position: absolute; left: 0px; top: 0px; width: 794px; height: 256px; overflow: hidden; background: #11092E">
-<img src="../img/keyart-wide.jpg" alt="Max, Brute and Pixie charge out of a hangar, guns and bomb raised" style="position: absolute; left: 0px; top: 0px; width: 794px; height: 265px">
-<div style="position: absolute; left: 0px; top: 0px; width: 300px; height: 256px; background: linear-gradient(90deg, rgba(17,9,46,0.82) 0%, rgba(17,9,46,0.5) 50%, rgba(17,9,46,0) 100%)"></div>
+<img src="../img/keyart-wide.jpg" alt="Max, Brute and Pixie charge out of a hangar, guns and bomb raised" style="position: absolute; left: -8px; top: 0px; width: 880px; height: 293px">
+<div style="position: absolute; left: 0px; top: 0px; width: 340px; height: 256px; background: linear-gradient(90deg, rgba(17,9,46,0.94) 0%, rgba(17,9,46,0.76) 48%, rgba(17,9,46,0) 100%)"></div>
 <img src="sheet/wordmark-white.svg" alt="Rift Jumpers" style="position: absolute; left: 20px; top: 24px; width: 160px; height: 58px; object-fit: contain; object-position: left center">
 <h1 style="position: absolute; left: 20px; top: 98px; width: 150px; font-family: 'Oxanium', Arial, sans-serif; font-size: 21px; font-weight: 800; font-style: italic; line-height: 1.12; color: #FBF8FD; text-shadow: 3px 3px 0px #FD3971">Survive,<br>Explore,<br>Upgrade!</h1>
 </div>
