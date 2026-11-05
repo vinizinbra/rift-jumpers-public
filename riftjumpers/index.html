@@ -32,7 +32,7 @@
   color-scheme:light;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;overflow-x:clip}
+html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
@@ -68,7 +68,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .btn.dark:hover{background:var(--pink);border-color:var(--pink)}
 .btn.pink{background:var(--pink-ink);border-color:var(--pink-ink);color:#fff}
 .btn.pink:hover{background:var(--ink);border-color:var(--ink)}
-@media (max-width:900px){.nav .wrap{flex-wrap:wrap;gap:8px 16px}.nav .btn{margin-left:auto}.nav-kit{display:none}.links{order:3;width:100%;margin:0;gap:20px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}.links a{white-space:nowrap;font-size:11px;padding:6px 0}}
+@media (max-width:1180px){.nav .wrap{flex-wrap:wrap;gap:8px 16px}.nav .btn{margin-left:auto}.nav-kit{display:none}.links{order:3;width:100%;margin:0;gap:20px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}.links a{white-space:nowrap;font-size:11px;padding:6px 0}}
 @media (max-width:420px){.nav .btn{padding:11px 14px}}
 
 /* Hero */
@@ -81,10 +81,13 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .hero h1 span{color:var(--pink)}
 .hero p{color:var(--muted);font-size:1.1rem;max-width:74ch}
 .ctas{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-.hero .art{position:relative;order:-1;width:100vw;margin-inline:calc(50% - 50vw)}
-.hero .art>img:first-child{width:100%;height:min(54vh,56.25vw);object-fit:cover;object-position:center top;display:block}
-.hero .art::after{content:"";position:absolute;inset:auto 0 0;height:46%;background:linear-gradient(0deg,rgba(10,15,36,.82),transparent);pointer-events:none}
-.art-logo{position:absolute;z-index:1;left:max(20px,calc(50vw - 600px));bottom:clamp(10px,2vw,26px);width:auto;height:clamp(84px,14vw,190px);filter:drop-shadow(0 4px 0 rgba(10,15,36,.8))}
+.art{position:relative;overflow:hidden;background:#100b1e}
+/* The art always shows whole: on wide or short screens it stays centered, and a blurred copy fills the sides. */
+.art::before{content:"";position:absolute;inset:-40px;background:url("img/keyart-trio-action.jpg") center/cover;filter:blur(26px) brightness(.5)}
+.art-in{position:relative;width:min(100%,max(568px,calc((100vh - 335px) * 1.7768)));margin:0 auto;line-height:0}
+@media (max-width:1180px){.art-in{width:min(100%,max(480px,calc((100vh - 385px) * 1.7768)))}}
+.art-main{display:block;width:100%;height:auto}
+.art-logo{position:absolute;left:3%;bottom:4%;width:auto;height:30%;filter:drop-shadow(0 4px 0 rgba(10,15,36,.8))}
 .stats{display:flex;flex-wrap:wrap;justify-content:center;text-align:center;border-top:1px solid var(--line);margin-top:8px}
 .stat{padding:20px 36px 4px;border-right:1px solid var(--line);display:grid;gap:4px}
 .stat:last-child{border-right:0}
@@ -172,8 +175,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .gallery img{display:block;width:100%;height:auto}
 .w12{grid-column:span 12}.w6{grid-column:span 6}.w4{grid-column:span 4}.w3{grid-column:span 3}
 @media (max-width:900px){.w3{grid-column:span 6}}
-@media (max-width:700px){.w6,.w4{grid-column:span 12}}
-figcaption{display:flex;justify-content:space-between;gap:12px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+@media (max-width:700px){.w6,.w4,.w3{grid-column:span 12}}
+figcaption{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 12px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 figcaption a{color:var(--pink-ink);white-space:nowrap}
 
 /* Studio + contact */
@@ -208,6 +211,8 @@ footer a{color:var(--pink-ink)}
   </div>
 </nav>
 
+<div class="art"><div class="art-in"><img class="art-main" src="img/keyart-trio-action.jpg" alt="Max, Brute and Pixie charge out of a hangar with guns and a skull bomb" width="1672" height="941"><img class="art-logo" src="logos/rift-jumpers-logo-white.svg" alt="" width="2000" height="1839"></div></div>
+
 <main class="wrap" id="top">
   <header class="hero">
     <div class="copy">
@@ -219,7 +224,6 @@ footer a{color:var(--pink-ink)}
         <a class="btn" href="rift-jumpers-press-kit.zip" download>Download press kit · 37 MB ↓</a>
       </div>
     </div>
-    <div class="art"><img src="img/keyart-trio-action.jpg" alt="Max, Brute and Pixie charge out of a hangar with guns and a skull bomb" width="1672" height="941"><img class="art-logo" src="logos/rift-jumpers-logo-white.svg" alt="" width="2000" height="1839"></div>
   </header>
   <div class="stats">
     <div class="stat"><b>1–4 players</b><span class="cap">Online co-op</span></div>
