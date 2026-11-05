@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Rift Jumpers | Pitch</title>
+<meta name="description" content="Rift Jumpers one-pager and trailer: a top-down co-op survivors roguelite for 1-4 players, by Pacha Games.">
+<meta name="robots" content="noindex,nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Rift Jumpers | Pitch">
+<meta property="og:description" content="One-pager and trailer. Survivors simplicity with Gunfire Reborn depth.">
+<meta property="og:url" content="https://pachagames.com/riftjumpers/pitch/">
+<meta property="og:image" content="https://pachagames.com/riftjumpers/img/og-rift-jumpers.jpg">
+<meta property="og:image:width" content="1232">
+<meta property="og:image:height" content="706">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../logos/rift-jumpers-mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@600;800&family=Barlow+Semi+Condensed:wght@500;600;700&display=swap">
+<style>
+/* Pitch page: the one-pager's own night purple, type and pink labels, with the trailer first and the document beside it. */
+:root{--bg:#160C2E;--panel:#21133f;--ink:#FBF8FD;--muted:#c8c3d8;--pink:#FD3971;--pink-deep:#D81B55;--cyan:#19C8F5;--display:"Oxanium",Arial,sans-serif;--sans:"Barlow Semi Condensed",Arial,sans-serif;--gutter:clamp(18px,4vw,48px);color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:500 18px/1.4 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+h1,h2,p{margin:0}
+.wrap{max-width:1320px;margin:0 auto;padding-inline:var(--gutter)}
+.bar{border-bottom:3px solid var(--pink)}
+.bar .wrap{display:flex;align-items:center;gap:18px;padding-block:10px}
+.bar img{display:block;height:52px;width:auto}
+.bar nav{margin-left:auto;display:flex;gap:clamp(14px,3vw,28px)}
+.bar nav a{font:800 13px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;padding:8px 0}
+.bar nav a:hover{color:var(--cyan)}
+.head{padding-block:clamp(24px,3.4vw,44px) clamp(16px,2vw,24px)}
+h1{font:800 italic clamp(1.9rem,4vw,3.3rem)/1.08 var(--display);text-shadow:.07em .07em 0 var(--pink);text-wrap:balance}
+.sub{margin-top:12px;color:var(--muted);font-size:clamp(1.05rem,1.5vw,1.25rem)}
+.grid{display:grid;grid-template-columns:minmax(0,1.32fr) minmax(0,1fr);gap:clamp(20px,3vw,40px);align-items:start;padding-bottom:clamp(44px,6vw,72px)}
+.label{display:inline-block;margin:0 0 12px;padding:6px 26px 7px 16px;font:800 italic 17px/1.1 var(--display);background:var(--pink);clip-path:polygon(9px 0,100% 0,calc(100% - 9px) 100%,0 100%);text-shadow:1px 1px 0 var(--bg)}
+.trailer{position:relative;display:block;width:100%;aspect-ratio:16/9;overflow:hidden;background:#000;border:0;padding:0;cursor:pointer}
+.trailer img{display:block;width:100%;height:100%;object-fit:cover;opacity:.72;transition:opacity .15s}
+.trailer:hover img{opacity:.55}
+.trailer .play{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:12px;color:#fff;font:800 italic clamp(1.1rem,2.2vw,1.6rem)/1 var(--display);text-transform:uppercase;text-shadow:0 2px 0 var(--bg)}
+.trailer .disc{width:clamp(60px,8vw,92px);aspect-ratio:1;display:grid;place-items:center;background:var(--pink-deep);border:3px solid #fff;border-radius:50%}
+.trailer .disc svg{width:38%;margin-left:6%}
+.trailer iframe{display:block;width:100%;height:100%;border:0}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:50px;padding:0 20px;font:800 14px/1 var(--display);letter-spacing:.03em;text-transform:uppercase;color:var(--ink);border:2px solid var(--ink);transition:background .12s,color .12s,border-color .12s}
+.btn:hover{background:var(--ink);color:var(--bg)}
+.btn.main{background:var(--pink-deep);border-color:var(--pink-deep)}
+.btn.main:hover{background:var(--ink);border-color:var(--ink)}
+.contact{margin-top:20px;padding:16px 18px;background:var(--panel);border-left:0}
+.contact b{display:block;font:800 13px/1.2 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--pink)}
+.contact a{font-weight:700;font-size:1.2rem;color:var(--cyan)}
+.contact a:hover{text-decoration:underline}
+.sheet{display:block;box-shadow:10px 10px 0 rgba(253,57,113,.85);line-height:0;transition:translate .12s}
+.sheet:hover{translate:-2px -2px}
+.sheet img{display:block;width:100%;height:auto}
+.foot{padding-block:18px 26px;border-top:1px solid rgba(255,255,255,.16);color:var(--muted);font-size:15px}
+.foot a{text-decoration:underline}
+@media (max-width:920px){
+  .grid{grid-template-columns:minmax(0,1fr)}
+  .sheet{box-shadow:6px 6px 0 rgba(253,57,113,.85)}
+}
+@media (max-width:480px){
+  .ctas .btn{flex:1 1 100%}
+}
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <a href="../"><img src="../logos/rift-jumpers-logo-white.svg" alt="Rift Jumpers press kit" width="2000" height="1839"></a>
+    <nav aria-label="Rift Jumpers"><a href="../play/">Play</a><a href="../">Press kit</a><a href="../../">Pacha Games</a></nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="head">
+    <h1>Survivors simplicity with Gunfire Reborn depth.</h1>
+    <p class="sub">The Rift Jumpers trailer and one-pager, in one place.</p>
+  </div>
+
+  <div class="grid">
+    <section aria-labelledby="trailer-h">
+      <h2 class="label" id="trailer-h">TRAILER</h2>
+      <button class="trailer" id="tr" type="button" aria-label="Play the Rift Jumpers trailer">
+        <img src="../screens/horde.jpg" alt="" width="1280" height="720">
+        <span class="play"><span class="disc"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M6 4l14 8-14 8z"/></svg></span>Watch the trailer</span>
+      </button>
+      <div class="ctas">
+        <a class="btn main" href="rift-jumpers-one-pager.pdf" download>Download one-pager · 3 MB ↓</a>
+        <a class="btn" href="../play/">Play the playtest ▶</a>
+      </div>
+      <p class="contact"><b>Talk to us</b><a href="mailto:admin@pachagames.com">admin@pachagames.com</a></p>
+    </section>
+
+    <section aria-labelledby="sheet-h">
+      <h2 class="label" id="sheet-h">ONE-PAGER</h2>
+      <a class="sheet" href="rift-jumpers-one-pager.pdf" target="_blank" rel="noopener" aria-label="Open the Rift Jumpers one-pager as a PDF">
+        <img src="rift-jumpers-one-pager.jpg" alt="Rift Jumpers one-pager: game facts, what makes it different, project status, competitive landscape and team" width="1588" height="2246">
+      </a>
+    </section>
+  </div>
+</main>
+
+<footer class="foot"><div class="wrap">© 2026 <a href="../../">Pacha Games</a></div></footer>
+<script>
+document.getElementById("tr").addEventListener("click", function () {
+  var w = document.createElement("div");
+  w.className = "trailer";
+  var f = document.createElement("iframe");
+  f.src = "https://www.youtube-nocookie.com/embed/nVJmuOhg51Q?autoplay=1&rel=0";
+  f.title = "Rift Jumpers trailer";
+  f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+  w.appendChild(f);
+  this.replaceWith(w);
+});
+</script>
+</body>
+</html>
