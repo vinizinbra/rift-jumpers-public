@@ -228,10 +228,12 @@ function fit() { box.style.setProperty("--s", box.clientWidth / 794); }
 fit();
 new ResizeObserver(fit).observe(box);
 // Tracked links (/riftjumpers/devgamm) arrive with UTM tags. Umami reads them on load,
-// then the address bar is cleaned so visitors see the plain pitch URL.
+// then the address bar is cleaned so visitors see the plain pitch URL. This inline script runs
+// before Umami's deferred one wraps history.replaceState, so the cleanup isn't counted as a second view.
 if (location.search.indexOf("utm_") !== -1) {
+  var cleanUrl = history.replaceState.bind(history);
   window.addEventListener("load", function () {
-    setTimeout(function () { history.replaceState(null, "", location.pathname + location.hash); }, 1500);
+    setTimeout(function () { cleanUrl(null, "", location.pathname + location.hash); }, 1500);
   });
 }
 document.getElementById("tr").addEventListener("click", function () {
