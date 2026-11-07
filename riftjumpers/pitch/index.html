@@ -227,6 +227,13 @@ var box = document.getElementById("box");
 function fit() { box.style.setProperty("--s", box.clientWidth / 794); }
 fit();
 new ResizeObserver(fit).observe(box);
+// Tracked links (/riftjumpers/devgamm) arrive with UTM tags. Umami reads them on load,
+// then the address bar is cleaned so visitors see the plain pitch URL.
+if (location.search.indexOf("utm_") !== -1) {
+  window.addEventListener("load", function () {
+    setTimeout(function () { history.replaceState(null, "", location.pathname + location.hash); }, 1500);
+  });
+}
 document.getElementById("tr").addEventListener("click", function () {
   if (window.umami) umami.track("Trailer play", { page: "pitch" });
   var w = document.createElement("div");
