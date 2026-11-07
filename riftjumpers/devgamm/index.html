@@ -5,9 +5,13 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Rift Jumpers</title>
 <meta name="robots" content="noindex,nofollow">
-<!-- The DevGAMM listing links here. The UTM tags let analytics count these visits separately. -->
-<meta http-equiv="refresh" content="0; url=/riftjumpers/pitch/?utm_source=devgamm&amp;utm_medium=meettomatch&amp;utm_campaign=devgamm-lisbon-2026">
-<script>location.replace("/riftjumpers/pitch/?utm_source=devgamm&utm_medium=meettomatch&utm_campaign=devgamm-lisbon-2026");</script>
+<!-- The DevGAMM MeetToMatch listings link here: the project as /riftjumpers/devgamm, the profile as
+     /riftjumpers/devgamm#profile. The UTM source tells them apart in Umami. -->
+<script>
+var source = location.hash === "#profile" ? "devgamm-profile" : "devgamm-project";
+location.replace("/riftjumpers/pitch/?utm_source=" + source + "&utm_medium=meettomatch&utm_campaign=devgamm-lisbon-2026");
+</script>
+<noscript><meta http-equiv="refresh" content="0; url=/riftjumpers/pitch/?utm_source=devgamm-project&amp;utm_medium=meettomatch&amp;utm_campaign=devgamm-lisbon-2026"></noscript>
 </head>
-<body><p><a href="/riftjumpers/pitch/?utm_source=devgamm&amp;utm_medium=meettomatch&amp;utm_campaign=devgamm-lisbon-2026">Rift Jumpers pitch</a></p></body>
+<body><p><a href="/riftjumpers/pitch/">Rift Jumpers pitch</a></p></body>
 </html>
