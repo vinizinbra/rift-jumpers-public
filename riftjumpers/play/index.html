@@ -33,6 +33,16 @@ main{flex:1;min-height:0;display:grid;place-items:center;padding:0 max(0px,env(s
 .gate .disc{width:clamp(64px,10vmin,96px);aspect-ratio:1;border-radius:50%;background:var(--pink);border:3px solid #fff;display:grid;place-items:center;box-shadow:0 10px 40px rgba(253,57,113,.45)}
 .gate .disc svg{width:38%;margin-left:6%}
 .gate b{font-size:clamp(1.3rem,3.2vmin,2rem);font-weight:900;letter-spacing:-.01em;text-transform:uppercase;text-shadow:0 2px 0 #0a0f24,0 3px 14px rgba(10,15,36,.8)}
+.lock{position:relative;display:flex;flex-direction:column;align-items:center;gap:12px;padding:0 16px;max-width:420px;text-align:center}
+.lock p{margin:0;font-size:14px;font-weight:600;color:#fff;text-shadow:0 1px 0 #0a0f24,0 2px 10px rgba(10,15,36,.9)}
+.lock p a{color:#fff;text-decoration:underline;text-decoration-color:var(--pink);text-underline-offset:3px}
+.lock form{display:flex;gap:8px;width:100%;max-width:340px}
+.lock input{flex:1;min-width:0;font:600 15px/1 inherit;font-family:inherit;padding:12px 14px;border-radius:10px;border:2px solid #fff;background:rgba(10,15,36,.75);color:#fff}
+.lock input::placeholder{color:var(--muted)}
+.lock button{font:900 13px/1 inherit;font-family:inherit;letter-spacing:.08em;text-transform:uppercase;padding:0 18px;border-radius:10px;border:2px solid #fff;background:var(--pink);color:#fff;cursor:pointer}
+.lock .err{color:#ffd0dc;font-size:12.5px;min-height:1em}
+.gate.locked{cursor:default}
+.gate.locked:hover::before{background:rgba(10,15,36,.42)}
 .gate small{font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#fff;text-shadow:0 1px 0 #0a0f24,0 2px 10px rgba(10,15,36,.9)}
 </style>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="ec12085d-d64f-4396-bc3d-f3ccdd5e73f3"></script>
@@ -47,20 +57,39 @@ main{flex:1;min-height:0;display:grid;place-items:center;padding:0 max(0px,env(s
 </header>
 <main>
   <div class="stage" id="stage">
-    <button class="gate" id="gate" type="button">
+    <div class="gate locked" id="gate">
       <span class="disc"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M6 4l14 8-14 8z"/></svg></span>
       <b>Play the playtest</b>
+      <div class="lock">
+        <p>This needs a password. Please contact <a href="mailto:admin@pachagames.com?subject=Rift%20Jumpers%20playtest%20access">admin@pachagames.com</a> for access.</p>
+        <form id="unlock" autocomplete="off">
+          <input id="pw" type="password" placeholder="Password" aria-label="Playtest password" required>
+          <button type="submit">Play ▶</button>
+        </form>
+        <span class="err" id="err" role="status"></span>
+      </div>
       <small>Runs in your browser · About 70 MB · Best on desktop</small>
-    </button>
+    </div>
   </div>
 </main>
 <script>
-// itch's official embed for this upload. `butler push` to the same channel should keep the upload id.
-var GAME_URL = "https://itch.io/embed-upload/20262782?color=0a0f24&secret=lrMKw70Dl2JN6OmQgEWowZIbgc";
+// The itch embed URL is AES-GCM encrypted with a key derived (PBKDF2) from the playtest password,
+// so it never appears in this page's source. Change the password by re-encrypting LOCK.
+var LOCK = {"s": "lMoU8RIwKo279VGRJ2Tr6g==", "i": "0b632vafbqbghjgL", "c": "cFC0O5QoGh7TKWZyilw/8p1mybxPKjCf+75n9x2gVB2oDrb9uoA4WVwPzoaVaSTa1iXBm1vp5jxgNL4iBBxi1JDv3GrxnLgiuwglZKll5Ae1J/NZNmGeJHuSWEtv9g4Ok1wJNQ=="};
 var stage = document.getElementById("stage"), gate = document.getElementById("gate"), fs = document.getElementById("fs");
-function start() {
+var form = document.getElementById("unlock"), pw = document.getElementById("pw"), err = document.getElementById("err");
+function b64(s) { return Uint8Array.from(atob(s), function (c) { return c.charCodeAt(0); }); }
+function unlock(password) {
+  var enc = new TextEncoder();
+  return crypto.subtle.importKey("raw", enc.encode(password), "PBKDF2", false, ["deriveKey"]).then(function (base) {
+    return crypto.subtle.deriveKey({ name: "PBKDF2", salt: b64(LOCK.s), iterations: 250000, hash: "SHA-256" }, base, { name: "AES-GCM", length: 256 }, false, ["decrypt"]);
+  }).then(function (key) {
+    return crypto.subtle.decrypt({ name: "AES-GCM", iv: b64(LOCK.i) }, key, b64(LOCK.c));
+  }).then(function (buf) { return new TextDecoder().decode(buf); });
+}
+function start(url) {
   var f = document.createElement("iframe");
-  f.src = GAME_URL;
+  f.src = url;
   f.title = "Rift Jumpers";
   f.allow = "autoplay; fullscreen *; gamepad; cross-origin-isolated; web-share";
   f.setAttribute("allowfullscreen", "true");
@@ -70,9 +99,24 @@ function start() {
   f.focus();
   if (stage.requestFullscreen) fs.hidden = false;
 }
-gate.addEventListener("click", start);
+function remember(v) { try { localStorage.setItem("rj.playtest", v); } catch (e) {} }
+function saved() { try { return localStorage.getItem("rj.playtest"); } catch (e) { return null; } }
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  err.textContent = "Checking…";
+  var value = pw.value;
+  unlock(value).then(function (url) {
+    remember(value);
+    if (window.umami) umami.track("Playtest unlock");
+    start(url);
+  }).catch(function () {
+    err.textContent = "Wrong password. Ask admin@pachagames.com for access.";
+    pw.select();
+  });
+});
 fs.addEventListener("click", function () { stage.requestFullscreen(); });
-if (location.hash === "#start") start();
+var prev = saved();
+if (prev) unlock(prev).then(function (url) { if (location.hash === "#start") start(url); else { pw.value = prev; } }).catch(function () { remember(""); });
 </script>
 </body>
 </html>
