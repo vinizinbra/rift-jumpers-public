@@ -344,8 +344,8 @@ footer a{color:var(--pink-ink)}
       <figure class="w4"><a class="f" href="gifs/team-challenge.gif" target="_blank" rel="noopener"><video src="gifs/team-challenge.mp4" poster="gifs/team-challenge.jpg" autoplay muted loop playsinline preload="metadata" aria-label="A Team Challenge: the squad counts down, survives Cursed Survival at 1 HP, then fails" style="display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover"></video></a><figcaption>Team Challenge <a href="gifs/team-challenge.gif" target="_blank" rel="noopener" data-umami-event="GIF download" data-umami-event-gif="team-challenge">GIF ↗</a></figcaption></figure>
       <figure class="w4"><a class="f" href="gifs/combat-neon.gif" target="_blank" rel="noopener"><video src="gifs/combat-neon.mp4" poster="gifs/combat-neon.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Yoru's vortex pulling Neon City enemies together in combat" style="display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover"></video></a><figcaption>Neon City combat <a href="gifs/combat-neon.gif" target="_blank" rel="noopener" data-umami-event="GIF download" data-umami-event-gif="combat-neon">GIF ↗</a></figcaption></figure>
       <figure class="w4"><a class="f" href="gifs/cursed-rift.gif" target="_blank" rel="noopener"><video src="gifs/cursed-rift.mp4" poster="gifs/cursed-rift.jpg" autoplay muted loop playsinline preload="metadata" aria-label="The team reaching a Cursed Rift, which offers a Rift Mutation in exchange for Max HP" style="display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover"></video></a><figcaption>Cursed Rift <a href="gifs/cursed-rift.gif" target="_blank" rel="noopener" data-umami-event="GIF download" data-umami-event-gif="cursed-rift">GIF ↗</a></figcaption></figure>
-      <figure class="w6"><a class="f" href="gifs/gunsmith-coop.gif" target="_blank" rel="noopener"><video src="gifs/gunsmith-coop.mp4" poster="gifs/gunsmith-coop.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Three heroes run to the Gunsmith truck in Arctic Fields during a Break, and Capy buys a weapon perk" style="display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover"></video></a><figcaption>Gunsmith with the team <a href="gifs/gunsmith-coop.gif" target="_blank" rel="noopener" data-umami-event="GIF download" data-umami-event-gif="gunsmith-coop">GIF ↗</a></figcaption></figure>
-      <figure class="w6"><a class="f" href="gifs/store.gif" target="_blank" rel="noopener"><video src="gifs/store.mp4" poster="gifs/store.jpg" autoplay muted loop playsinline preload="metadata" aria-label="A hero buying food, a repair and a weapon at the Store before the next survival wave" style="display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover"></video></a><figcaption>Shopping at the Store <a href="gifs/store.gif" target="_blank" rel="noopener" data-umami-event="GIF download" data-umami-event-gif="store">GIF ↗</a></figcaption></figure>
+      <figure class="w6"><a class="f" href="gifs/gunsmith-coop.gif" target="_blank" rel="noopener"><video src="gifs/gunsmith-coop.mp4?v=sync1" poster="gifs/gunsmith-coop.jpg" data-sync="breaks" autoplay muted playsinline preload="metadata" aria-label="Three heroes run to the Gunsmith truck in Arctic Fields during a Break, and Capy buys a weapon perk" style="display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover"></video></a><figcaption>Gunsmith with the team <a href="gifs/gunsmith-coop.gif" target="_blank" rel="noopener" data-umami-event="GIF download" data-umami-event-gif="gunsmith-coop">GIF ↗</a></figcaption></figure>
+      <figure class="w6"><a class="f" href="gifs/store.gif" target="_blank" rel="noopener"><video src="gifs/store.mp4?v=sync1" poster="gifs/store.jpg" data-sync="breaks" autoplay muted playsinline preload="metadata" aria-label="A hero buying food, a repair and a weapon at the Store before the next survival wave" style="display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover"></video></a><figcaption>Shopping at the Store <a href="gifs/store.gif" target="_blank" rel="noopener" data-umami-event="GIF download" data-umami-event-gif="store">GIF ↗</a></figcaption></figure>
     </div>
   </section>
 
@@ -427,6 +427,24 @@ document.querySelector(".trailer").addEventListener("click", function (e) {
   f.style.cssText = "width:100%;aspect-ratio:16/9;border:0;display:block";
   this.replaceWith(f);
 });
+</script>
+<script>
+// Play the Gunsmith and Store loops as a pair: same start, same restart, drift corrected.
+(function () {
+  var vids = Array.prototype.slice.call(document.querySelectorAll('video[data-sync="breaks"]'));
+  if (vids.length < 2) return;
+  var lead = vids[0];
+  function restart() { vids.forEach(function (v) { v.currentTime = 0; var p = v.play(); if (p && p.catch) p.catch(function () {}); }); }
+  vids.forEach(function (v) { v.loop = false; v.addEventListener("ended", restart); });
+  var ready = 0;
+  vids.forEach(function (v) {
+    function go() { if (++ready === vids.length) restart(); }
+    if (v.readyState >= 3) go(); else v.addEventListener("canplay", go, { once: true });
+  });
+  lead.addEventListener("timeupdate", function () {
+    vids.forEach(function (v) { if (v !== lead && Math.abs(v.currentTime - lead.currentTime) > 0.12) v.currentTime = lead.currentTime; });
+  });
+})();
 </script>
 </body>
 </html>
