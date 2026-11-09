@@ -75,7 +75,7 @@ main{flex:1;min-height:0;display:grid;place-items:center;padding:0 max(0px,env(s
 <script>
 // The itch embed URL is AES-GCM encrypted with a key derived (PBKDF2) from the playtest password,
 // so it never appears in this page's source. Change the password by re-encrypting LOCK.
-var LOCK = {"s": "lMoU8RIwKo279VGRJ2Tr6g==", "i": "0b632vafbqbghjgL", "c": "cFC0O5QoGh7TKWZyilw/8p1mybxPKjCf+75n9x2gVB2oDrb9uoA4WVwPzoaVaSTa1iXBm1vp5jxgNL4iBBxi1JDv3GrxnLgiuwglZKll5Ae1J/NZNmGeJHuSWEtv9g4Ok1wJNQ=="};
+var LOCK = {"s":"xIvZ1QdgVBCFP5v6+reXAA==","i":"0oJx6yUDteOoHVqC","c":"yQTkBZUOB8WM1aqbUfLJ/SN8ZSR6vmRrY/0W3QRezpenuAToKXsuTTf/smcbc2vbXY1FZccIAHgXlrXlFPRk63PNuGUqtHYHGQ3Jl2nsTSR3hvlIXLbTNtP2ytj6YALxwGvtLA=="};
 var stage = document.getElementById("stage"), gate = document.getElementById("gate"), fs = document.getElementById("fs");
 var form = document.getElementById("unlock"), pw = document.getElementById("pw"), err = document.getElementById("err");
 function b64(s) { return Uint8Array.from(atob(s), function (c) { return c.charCodeAt(0); }); }
