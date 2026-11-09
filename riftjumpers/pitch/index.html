@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400..800&family=Barlow+Semi+Condensed:wght@500;600;700&display=swap">
 <style>
-/* Pitch page: the trailer, then the one-pager exactly as designed, scaled to the column. Its markup is fixed at 794x1123. */
+/* Pitch page: the trailer, a strip of four gameplay loops (reused from the press kit's gifs/), then the one-pager exactly as designed, scaled to the column. Its markup is fixed at 794x1123. */
 :root{--bg:#0B0618;--ink:#FBF8FD;--pink:#FD3971;--pink-deep:#D81B55;--cyan:#19C8F5;--display:"Oxanium",Arial,sans-serif;color-scheme:dark}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:500 18px/1.4 "Barlow Semi Condensed",Arial,sans-serif}
@@ -32,7 +32,12 @@ h1,h2,h3,p{margin:0}
 .bar nav a{color:var(--ink);text-decoration:none;font:800 13px/1 var(--display);letter-spacing:.04em;text-transform:uppercase;padding:8px 0;white-space:nowrap}
 .bar nav a:hover{color:var(--cyan)}
 .area{display:inline-block;margin:clamp(14px,2vw,22px) 0 12px clamp(14px,3vw,0px);padding:8px 58px 9px 24px;font:800 italic clamp(1.25rem,2.6vw,1.7rem)/1.1 var(--display);text-transform:uppercase;text-shadow:2px 2px 0 #160C2E;clip-path:polygon(11px 0,100% 0,calc(100% - 11px) 100%,0 100%);background:url("sheet/label.png") right center/auto 100% no-repeat,var(--pink)}
-.area#pitch{margin-top:clamp(36px,5vw,60px)}
+.area#pitch,.area#gameplay{margin-top:clamp(36px,5vw,60px)}
+.gifs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:0 clamp(14px,3vw,0px)}
+.gifs figure{margin:0}
+.gifs video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;background:#000}
+.gifs figcaption{margin-top:6px;font:800 italic 14px/1.2 var(--display);text-transform:uppercase;letter-spacing:.02em}
+@media (max-width:560px){.gifs{grid-template-columns:minmax(0,1fr)}}
 .trailer{position:relative;display:block;width:100%;aspect-ratio:16/9;overflow:hidden;background:#000;border:0;padding:0;cursor:pointer}
 .trailer img{display:block;width:100%;height:100%;object-fit:cover;opacity:.78;transition:opacity .15s}
 .trailer:hover img{opacity:.6}
@@ -66,6 +71,14 @@ h1,h2,h3,p{margin:0}
     <img src="img/trailer-cover.jpg" alt="">
     <span class="play"><span class="disc"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M6 4l14 8-14 8z"/></svg></span>Watch the trailer</span>
   </button>
+
+  <h2 class="area" id="gameplay">Gameplay</h2>
+  <div class="gifs">
+    <figure><video src="../gifs/boss-intro.mp4" poster="../gifs/boss-intro.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Riff Riot, the Neon City boss, gets a comic-style intro card, then the squad fights him inside a purple vortex"></video><figcaption>Boss intro: Riff Riot</figcaption></figure>
+    <figure><video src="../gifs/capy-horde.mp4" poster="../gifs/capy-horde.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Capy dashes through a huge Arctic Fields horde while explosions go off around him"></video><figcaption>Capy vs the horde</figcaption></figure>
+    <figure><video src="../gifs/gunsmith-coop.mp4?v=sync1" poster="../gifs/gunsmith-coop.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Three heroes run to the Gunsmith truck in Arctic Fields during a Break, and Capy buys a weapon perk"></video><figcaption>Gunsmith with the team</figcaption></figure>
+    <figure><video src="../gifs/team-challenge.mp4" poster="../gifs/team-challenge.jpg" autoplay muted loop playsinline preload="metadata" aria-label="A Team Challenge: the squad counts down, survives Cursed Survival at 1 HP, then fails"></video><figcaption>Team Challenge</figcaption></figure>
+  </div>
 
   <h2 class="area" id="pitch">Pitch</h2>
   <div class="sheet-box" id="box">
