@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>How to play Rift Jumpers</title>
+<meta name="description" content="A two-minute guide to Rift Jumpers: controls, how a run works, and the things new players miss.">
+<meta property="og:title" content="How to play Rift Jumpers">
+<meta property="og:description" content="Controls, how a run works, and the things new players miss.">
+<meta property="og:image" content="https://pachagames.com/riftjumpers/deck/img/og.jpg">
+<link rel="icon" href="../logos/rift-jumpers-mark.svg?v=20261105" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@600;700;800&family=Barlow+Semi+Condensed:wght@500;600;700&display=swap">
+<style>
+:root{--bg:#0B0618;--panel:#160C2E;--panel2:#1F1440;--ink:#FBF8FD;--muted:#B7AECB;--pink:#FD3971;--cyan:#19C8F5;--display:"Oxanium",Arial,sans-serif;--body:"Barlow Semi Condensed",Arial,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:500 18px/1.45 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img,video{display:block;max-width:100%}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:10;background:rgba(11,6,24,.88);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.07)}
+.bar .wrap{display:flex;align-items:center;gap:16px;height:60px}
+.bar img{height:34px;width:auto}
+.bar nav{margin-left:auto;display:flex;gap:20px}
+.bar nav a{font:800 12px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--muted)}
+.bar nav a:hover{color:var(--pink)}
+@media (max-width:640px){.bar nav .opt{display:none}}
+
+/* hero */
+.hero{padding:56px 0 30px;text-align:center;background:radial-gradient(70% 90% at 50% 0,#3a1668 0,transparent 70%)}
+.label{display:inline-block;padding:8px 46px 10px 18px;font:800 italic clamp(30px,5vw,48px)/1 var(--display);text-transform:uppercase;color:#fff;text-shadow:3px 3px 0 var(--panel);background:var(--pink);clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);box-shadow:none}
+.hero p{max-width:640px;margin:18px auto 0;color:var(--muted);font-size:20px}
+.hero p b{color:var(--ink)}
+
+h2{font:800 italic clamp(26px,3.6vw,36px)/1.1 var(--display);text-transform:uppercase;margin:0 0 6px;letter-spacing:.01em}
+h2 .n{color:var(--pink)}
+.sub{margin:0 0 22px;color:var(--muted)}
+section{padding:40px 0}
+
+/* controls */
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media (max-width:760px){.controls{grid-template-columns:1fr}}
+.ctl{background:var(--panel);border:2px solid rgba(255,255,255,.08);padding:18px 20px}
+.ctl h3{margin:0 0 12px;font:800 15px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
+.ctl dl{display:grid;grid-template-columns:auto 1fr;gap:10px 14px;margin:0;align-items:center}
+.ctl dt{display:flex;gap:6px;flex-wrap:wrap}
+.ctl dd{margin:0}
+kbd{display:inline-block;min-width:34px;padding:5px 9px 6px;text-align:center;font:700 14px/1 var(--display);color:var(--panel);background:#fff;border-radius:6px;box-shadow:0 3px 0 #b9b2c9}
+kbd.pad{border-radius:999px;min-width:34px}
+kbd.a{background:#5fd068}kbd.x{background:#4aa3ff}kbd.y{background:#ffd23f}
+.note{margin:14px 0 0;color:var(--muted);font-size:16px}
+.note b{color:var(--pink)}
+
+/* run loop */
+.loop{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media (max-width:900px){.loop{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.loop{grid-template-columns:1fr}}
+.step{background:var(--panel);border:3px solid var(--pink);display:flex;flex-direction:column}
+.step.c{border-color:var(--cyan)}
+.step video{width:100%;aspect-ratio:616/347;object-fit:cover;background:#000}
+.step div{padding:14px 16px 16px}
+.step h3{margin:0 0 6px;font:800 italic 26px/1 var(--display);text-transform:uppercase;color:var(--pink)}
+.step.c h3{color:var(--cyan)}
+.step h3 span{color:var(--ink);font-size:18px;margin-left:6px}
+.step p{margin:0;font-size:17px}
+.again{margin:16px 0 0;padding:12px 18px;background:var(--cyan);color:var(--panel);font:800 18px/1.25 var(--display);text-align:center;text-transform:uppercase}
+
+/* tips */
+.tips{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:760px){.tips{grid-template-columns:1fr}}
+.tip{display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start;background:var(--panel);padding:18px 20px;border-left:6px solid var(--pink)}
+.tip:nth-child(even){border-left-color:var(--cyan)}
+.tip .ic{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--panel2);font-size:28px}
+.tip h3{margin:2px 0 4px;font:800 21px/1.15 var(--display)}
+.tip p{margin:0;font-size:17px;color:#e7e1f1}
+.tip p b{color:var(--ink)}
+.feature{display:grid;grid-template-columns:1.1fr 1fr;gap:22px;align-items:center;margin-top:22px;background:var(--panel);border:3px solid var(--pink);box-shadow:8px 8px 0 var(--cyan);padding:18px}
+@media (max-width:760px){.feature{grid-template-columns:1fr}}
+.feature video{width:100%;aspect-ratio:616/347;object-fit:cover}
+.feature h3{margin:0 0 8px;font:800 italic 28px/1.05 var(--display);text-transform:uppercase}
+.feature p{margin:0 0 8px}
+
+/* bottom */
+.cta{text-align:center;padding:30px 0 70px}
+.cta a{display:inline-block;margin:6px;padding:14px 26px;font:800 15px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:2px solid var(--ink)}
+.cta a.main{background:var(--pink);border-color:var(--pink)}
+.cta a:hover{background:var(--ink);color:var(--panel);border-color:var(--ink)}
+.cta p{color:var(--muted);margin:18px 0 0;font-size:16px}
+.cta p a{display:inline;margin:0;padding:0;border:0;font:inherit;letter-spacing:0;text-transform:none;text-decoration:underline;text-decoration-color:var(--pink);text-underline-offset:3px}
+.cta p a:hover{background:none;color:var(--ink)}
+</style>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="ec12085d-d64f-4396-bc3d-f3ccdd5e73f3"></script>
+</head>
+<body>
+<header class="bar"><div class="wrap">
+  <a href="../"><img src="../logos/rift-jumpers-logo-white.svg?v=20261105" alt="Rift Jumpers"></a>
+  <nav><a href="#controls" class="opt">Controls</a><a href="#run" class="opt">The run</a><a href="#tips">Tips</a></nav>
+</div></header>
+
+<div class="hero"><div class="wrap">
+  <h1 class="label">How to play</h1>
+  <p>A two-minute read before your first run. The build has <b>everything unlocked</b>, so here's what to look for.</p>
+</div></div>
+
+<main class="wrap">
+  <section id="controls">
+    <h2><span class="n">01</span> Controls</h2>
+    <p class="sub">Your gun fires on its own at the marked enemy in range. You move, dodge and pick your fights.</p>
+    <div class="controls">
+      <div class="ctl">
+        <h3>Gamepad (recommended)</h3>
+        <dl>
+          <dt><kbd class="pad">Left stick</kbd></dt><dd>Move</dd>
+          <dt><kbd class="pad a">A</kbd></dt><dd>Dash</dd>
+          <dt><kbd class="pad x">X</kbd></dt><dd>Hero skill · use Stores, Gunsmith and shrines</dd>
+          <dt><kbd class="pad">R1</kbd></dt><dd>Switch target</dd>
+          <dt><kbd class="pad y">Y</kbd></dt><dd>Ping for your team</dd>
+          <dt><kbd class="pad">R2</kbd></dt><dd>Hold for the full map</dd>
+          <dt><kbd class="pad">L1</kbd></dt><dd>Hold to skip the Break</dd>
+        </dl>
+      </div>
+      <div class="ctl">
+        <h3>Keyboard &amp; mouse</h3>
+        <dl>
+          <dt><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></dt><dd>Move</dd>
+          <dt><kbd>Shift</kbd></dt><dd>Dash</dd>
+          <dt><kbd>E</kbd></dt><dd>Hero skill · use Stores, Gunsmith and shrines</dd>
+          <dt><kbd>Tab</kbd></dt><dd>Switch target</dd>
+          <dt><kbd>G</kbd></dt><dd>Ping (or middle mouse)</dd>
+          <dt><kbd>M</kbd></dt><dd>Full map</dd>
+          <dt><kbd>F</kbd></dt><dd>Hold to skip the Break</dd>
+        </dl>
+      </div>
+    </div>
+    <p class="note">PlayStation pads work too (✕ dash, □ skill, △ ping). <b>Co-op:</b> hold <kbd>E</kbd> / <kbd class="pad x">X</kbd> next to a downed teammate to revive them.</p>
+  </section>
+
+  <section id="run">
+    <h2><span class="n">02</span> How a run works</h2>
+    <p class="sub">About 18 minutes. Survive and Break repeat four times, then the boss.</p>
+    <div class="loop">
+      <article class="step"><video muted loop playsinline autoplay preload="metadata" poster="../gifs/capy-horde.jpg" src="../gifs/capy-horde.mp4"></video>
+        <div><h3>Survive <span>~3 min</span></h3><p>The horde never stops. Kill, grab XP, and pick an upgrade every level-up.</p></div></article>
+      <article class="step c"><video muted loop playsinline autoplay preload="metadata" poster="../gifs/team-challenge.jpg" src="../gifs/team-challenge.mp4"></video>
+        <div><h3>Explore <span>anytime</span></h3><p>Leave the path. Chests, secrets and optional challenges hide in the map.</p></div></article>
+      <article class="step"><video muted loop playsinline autoplay preload="metadata" poster="../gifs/store.jpg" src="../gifs/store.mp4"></video>
+        <div><h3>Break <span>~1 min</span></h3><p>Clear the area, then spend Coins at the Store and the Gunsmith.</p></div></article>
+      <article class="step c"><video muted loop playsinline autoplay preload="metadata" poster="../gifs/boss-intro.jpg" src="../gifs/boss-intro.mp4"></video>
+        <div><h3>Boss <span>finale</span></h3><p>Grab every reward you can first. Then beat it to win the run.</p></div></article>
+    </div>
+    <p class="again">Every map is procedural · every run plays out differently</p>
+  </section>
+
+  <section id="tips">
+    <h2><span class="n">03</span> What new players miss</h2>
+    <p class="sub">The things that make a run strong, and that nobody tells you.</p>
+    <div class="tips">
+      <div class="tip"><span class="ic">🗺️</span><div><h3>Optional challenges = the best rewards</h3><p>Team challenges and timed traversal puzzles are hidden around the map. They're <b>optional</b>, and they pay out rare rewards you won't get anywhere else.</p></div></div>
+      <div class="tip"><span class="ic">🛡️</span><div><h3>Your accessory saves you once</h3><p>It blocks one hit, then <b>pops off and lands nearby</b>. Walk over it to put it back on. Lost durability can be repaired at the Store during the Break.</p></div></div>
+      <div class="tip"><span class="ic">🔫</span><div><h3>You don't have to swap guns</h3><p>Love your weapon? <b>Keep it.</b> Skip the new guns in the Store and make yours stronger at the Gunsmith instead: one upgrade per Break.</p></div></div>
+      <div class="tip"><span class="ic">🔄</span><div><h3>The Store restocks every Break</h3><p>New weapons, food and repairs every time, so <b>check it on every Break</b>, even if it had nothing you wanted last time.</p></div></div>
+      <div class="tip"><span class="ic">⛰️</span><div><h3>Use the height</h3><p>The map isn't flat. Ledges, ramps and gaps give you <b>escape routes</b> and safer angles in a fight.</p></div></div>
+      <div class="tip"><span class="ic">📍</span><div><h3>Ping and stick together</h3><p>Ping elites, stores and challenges for your team. Solo works, but <b>co-op is where the chaos lives</b>.</p></div></div>
+    </div>
+    <div class="feature">
+      <video muted loop playsinline autoplay preload="metadata" poster="../gifs/gunsmith-coop.jpg" src="../gifs/gunsmith-coop.mp4"></video>
+      <div><h3>Break checklist</h3>
+        <p>1. Clear the last enemies.<br>2. Store: food, accessory repair, maybe a new gun.<br>3. Gunsmith: one upgrade for the gun you keep.<br>4. Everyone ready? Hold <kbd>F</kbd> / <kbd class="pad">L1</kbd> to skip ahead.</p></div>
+    </div>
+  </section>
+
+  <div class="cta">
+    <a class="main" id="back" href="../play/">▶ Back to the game</a>
+    <a href="https://store.steampowered.com/app/5545250/?utm_source=pachagames&amp;utm_medium=tutorial" target="_blank" rel="noopener">Wishlist on Steam ↗</a>
+    <a href="https://discord.gg/mqyF4EJKrA" target="_blank" rel="noopener">Join the Discord ↗</a>
+    <p>Questions or feedback? <a href="mailto:vini@pachagames.com">vini@pachagames.com</a></p>
+  </div>
+</main>
+<script>
+// A link from a per-publisher play page carries #r=<code> (and the build key): tag the visit, and send
+// "Back to the game" to that same play page.
+(function () {
+  var m = /r=([a-z0-9]{3,12})(?:&k=([A-Za-z0-9]+))?/.exec(location.hash), ref = m && m[1], key = m && m[2];
+  if (ref && key) document.getElementById("back").href = "../play/" + ref + "/#" + key;
+  else if (document.referrer.indexOf("/riftjumpers/play/") > -1) document.getElementById("back").href = "javascript:history.back()";
+  function track(n, d) { d = d || {}; if (ref) d.ref = ref; try { if (window.umami) umami.track(n, d); else setTimeout(function () { if (window.umami) umami.track(n, d); }, 1500); } catch (e) {} }
+  track("Tutorial open");
+  var tipsSeen = false;
+  window.addEventListener("scroll", function () {
+    if (tipsSeen) return;
+    var t = document.getElementById("tips").getBoundingClientRect().top;
+    if (t < innerHeight * 0.6) { tipsSeen = true; track("Tutorial tips seen"); }
+  }, { passive: true });
+  document.getElementById("back").addEventListener("click", function () { track("Tutorial back to game"); });
+})();
+</script>
+</body>
+</html>
