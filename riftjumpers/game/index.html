@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex,nofollow">
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="ec12085d-d64f-4396-bc3d-f3ccdd5e73f3"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Rift Jumpers</title>
+    <link rel="icon" href="TemplateData/icons/rift-jumpers-192.png" type="image/png">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <link rel="manifest" href="manifest.webmanifest">
+  </head>
+  <body>
+    <div id="unity-container">
+      <canvas id="unity-canvas" width=1366 height=768 tabindex="-1"></canvas>
+      <div id="rj-loading">
+        <div class="rj-speed"></div>
+        <div class="rj-dots"></div>
+        <div class="rj-dots rj-left"></div>
+        <div class="rj-panel">
+          <img class="rj-logo" src="TemplateData/rift-jumpers-logo.svg" alt="Rift Jumpers">
+          <div class="rj-tag" id="rj-tag" hidden>New build!</div>
+          <div class="rj-status" id="rj-status" role="status">Loading</div>
+          <div class="rj-bar">
+            <div class="rj-track"><div class="rj-fill" id="rj-fill"></div></div>
+          </div>
+          <div class="rj-meta"><span>v0.00.01 (build 67)</span><b id="rj-percent">0%</b></div>
+        </div>
+      </div>
+      <div id="unity-warning"> </div>
+    </div>
+    <script>
+      var container = document.querySelector("#unity-container");
+      var canvas = document.querySelector("#unity-canvas");
+      var loadingScreen = document.querySelector("#rj-loading");
+      var loadingFill = document.querySelector("#rj-fill");
+      var loadingPercent = document.querySelector("#rj-percent");
+      var loadingStatus = document.querySelector("#rj-status");
+      var warningBanner = document.querySelector("#unity-warning");
+
+      // Shows a temporary message banner/ribbon for a few seconds, or
+      // a permanent error message on top of the canvas if type=='error'.
+      // If type=='warning', a yellow highlight color is used.
+      // Modify or remove this function to customize the visually presented
+      // way that non-critical warnings and error messages are presented to the
+      // user.
+      function unityShowBanner(msg, type) {
+        function updateBannerVisibility() {
+          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+        }
+        var div = document.createElement('div');
+        div.innerHTML = msg;
+        warningBanner.appendChild(div);
+        if (type == 'error') div.style = 'background: red; padding: 10px;';
+        else {
+          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
+          setTimeout(function() {
+            warningBanner.removeChild(div);
+            updateBannerVisibility();
+          }, 5000);
+        }
+        updateBannerVisibility();
+      }
+
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/WebGl.loader.js";
+      var config = {
+        arguments: [],
+        dataUrl: buildUrl + "/WebGl.data.unityweb",
+        frameworkUrl: buildUrl + "/WebGl.framework.js.unityweb",
+        codeUrl: buildUrl + "/WebGl.wasm.unityweb",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "Pacha Games",
+        productName: "Rift Jumpers",
+        productVersion: "0.00.01",
+        showBanner: unityShowBanner,
+        // errorHandler: function(err, url, line) {
+        //    alert("error " + err + " occurred at line " + line);
+        //    // Return 'true' if you handled this error and don't want Unity
+        //    // to process it further, 'false' otherwise.
+        //    return true;
+        // },
+      };
+
+      // By default Unity keeps WebGL canvas render target size matched with
+      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
+      // Set this to false if you want to decouple this synchronization from
+      // happening inside the engine, and you would instead like to size up
+      // the canvas DOM size and WebGL render target sizes yourself.
+      // config.matchWebGLToCanvasSize = false;
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Mobile device style: fill the whole browser client area with the game canvas:
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+      }
+
+
+      // A host gives each upload its own folder, so the path tells a new build apart even when the version is unchanged.
+      var lastBuildKey = "rj_last_build";
+      var buildId = config.productVersion + "|" + location.pathname;
+      var lastBuild = null;
+      try { lastBuild = localStorage.getItem(lastBuildKey); } catch (e) { }
+      var isNewBuild = lastBuild !== null && lastBuild !== buildId;
+      var loadingText = isNewBuild ? "Downloading the update" : lastBuild === null ? "Downloading the game" : "Loading the game";
+      document.querySelector("#rj-tag").hidden = !isNewBuild;
+      loadingStatus.textContent = loadingText;
+
+      function showLoadingProgress(progress) {
+        var clamped = Math.min(Math.max(progress, 0), 1);
+        loadingFill.style.width = (clamped * 100) + "%";
+        loadingPercent.textContent = Math.round(clamped * 100) + "%";
+        // Unity holds near 90% while it decompresses and boots, which looks stuck without its own message.
+        loadingStatus.textContent = clamped >= 0.9 ? "Almost there, starting up" : loadingText;
+      }
+
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, showLoadingProgress).then((unityInstance) => {
+          try { localStorage.setItem(lastBuildKey, buildId); } catch (e) { }
+          loadingScreen.classList.add("rj-done");
+          setTimeout(function () { loadingScreen.style.display = "none"; }, 320);
+        }).catch((message) => {
+          loadingScreen.classList.add("rj-error");
+          loadingStatus.textContent = "Couldn't load the game. Please reload the page. (" + message + ")";
+        });
+      };
+      document.body.appendChild(script);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+{
+    "name": "Rift Jumpers",
+    "short_name": "Rift Jumpers",
+    "start_url": "index.html",
+    "display": "fullscreen",
+    "background_color": "#0a0f24",
+    "theme_color": "#0a0f24",
+    "description": "",
+    "icons": [{
+      "src": "TemplateData/icons/rift-jumpers-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }]
+  }
