@@ -67,6 +67,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .links a:hover,.links button:hover{color:var(--pink)}
 .links .steam{color:var(--ink);border:2px solid var(--ink);padding:7px 12px}
 .links .steam:hover{border-color:var(--pink)}
+.links .build{color:#fff;background:var(--pink);border:2px solid var(--pink);padding:7px 12px}
+.links .build:hover{background:#fff;border-color:#fff;color:#160c2e}
+.links .build[hidden]{display:none}
 .hint{position:fixed;left:50%;top:14px;transform:translateX(-50%);padding:8px 14px;border-radius:999px;background:rgba(22,12,46,.92);border:1px solid rgba(255,255,255,.14);font-size:12.5px;font-weight:700;color:var(--muted);white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .4s}
 .hint.show{opacity:1}
 @media (max-width:900px){.brand span,.links .mail{display:none}}
@@ -378,6 +381,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
   </div>
   <div class="links">
     <a class="mail" href="mailto:vini@pachagames.com?subject=Rift%20Jumpers" data-umami-event="Deck email">vini@pachagames.com</a>
+    <a class="build" id="build" href="#" hidden>▶ Play the build</a>
     <a class="steam" href="https://store.steampowered.com/app/5545250/?utm_source=pachagames&amp;utm_medium=deck" target="_blank" rel="noopener" data-umami-event="Steam wishlist" data-umami-event-page="deck">Steam ↗</a>
     <button class="fs" id="fs" type="button" hidden>Fullscreen ⛶</button>
   </div>
@@ -390,6 +394,15 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
   var count = document.getElementById("count"), progress = document.getElementById("progress");
   var prevB = document.getElementById("prev"), nextB = document.getElementById("next"), fs = document.getElementById("fs"), hint = document.getElementById("hint");
   var cur = -1, seen = {};
+  // Per-publisher copy (deck/<code>/, made by Marketing/Pitch/PlaytestLinks): RJ_REF tags every event, and the
+  // part of the link after "#" is that publisher's build key, so the hash is not used for slide numbers there.
+  var REF = window.RJ_REF || null, KEY = REF ? location.hash.slice(1) : "";
+  var build = document.getElementById("build");
+  if (REF && KEY) {
+    build.href = "/riftjumpers/play/" + REF + "/#" + KEY;
+    build.hidden = false;
+    build.addEventListener("click", function () { track("Deck build"); });
+  }
 
   function fit() {
     var w = viewport.clientWidth, h = viewport.clientHeight, pad = w > 700 ? 24 : 0;
@@ -399,7 +412,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
     stage.style.transform = "scale(" + s + ")";
   }
 
-  function track(name, data) { try { if (window.umami) umami.track(name, data); } catch (e) {} }
+  function track(name, data) {
+    data = data || {};
+    if (REF) data.ref = REF;
+    try { if (window.umami) umami.track(name, data); else setTimeout(function () { if (window.umami) umami.track(name, data); }, 1500); } catch (e) {}
+  }
 
   function go(n) {
     n = Math.max(0, Math.min(slides.length - 1, n));
@@ -415,7 +432,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
     count.innerHTML = "<b>" + (cur + 1) + "</b> / " + slides.length;
     progress.style.width = ((cur + 1) / slides.length * 100) + "%";
     prevB.disabled = cur === 0; nextB.disabled = cur === slides.length - 1;
-    history.replaceState(null, "", "#" + (cur + 1));
+    if (!REF) history.replaceState(null, "", "#" + (cur + 1));
     if (!seen[cur]) { seen[cur] = 1; track("Deck slide", { slide: cur + 1, id: s.id.replace(/^s-/, "") }); }
   }
 
@@ -470,9 +487,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 
   window.addEventListener("resize", fit);
   document.addEventListener("fullscreenchange", fit);
-  window.addEventListener("hashchange", function () { var n = parseInt(location.hash.slice(1), 10); if (n) go(n - 1); });
+  if (!REF) window.addEventListener("hashchange", function () { var n = parseInt(location.hash.slice(1), 10); if (n) go(n - 1); });
   fit();
-  go((parseInt(location.hash.slice(1), 10) || 1) - 1);
+  go(REF ? 0 : (parseInt(location.hash.slice(1), 10) || 1) - 1);
+  if (REF) track("Deck open");
   setTimeout(function () { hint.classList.add("show"); }, 600);
   setTimeout(function () { hint.classList.remove("show"); }, 4200);
 })();
