@@ -41,6 +41,15 @@ h2 .n{color:var(--pink)}
 .sub{margin:0 0 22px;color:var(--muted)}
 section{padding:40px 0}
 
+/* first run callout */
+.first{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;margin:34px 0 0;padding:18px 22px;background:var(--panel);border:3px solid var(--cyan);box-shadow:8px 8px 0 var(--pink)}
+.first .ic{font-size:40px;line-height:1}
+.first h3{margin:0 0 6px;font:800 italic 24px/1.1 var(--display);text-transform:uppercase;color:var(--cyan)}
+.first ul{margin:0;padding-left:18px}
+.first li{margin:3px 0}
+.first li b{color:var(--ink)}
+.first .soft{color:var(--muted)}
+@media (max-width:520px){.first{grid-template-columns:1fr}}
 /* controls */
 .controls{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 @media (max-width:760px){.controls{grid-template-columns:1fr}}
@@ -107,6 +116,16 @@ kbd.a{background:#5fd068}kbd.x{background:#4aa3ff}kbd.y{background:#ffd23f}
 </div></div>
 
 <main class="wrap">
+  <div class="first">
+    <span class="ic">🌱</span>
+    <div><h3>Your first run</h3>
+      <ul>
+        <li><b>World: Grassland.</b> It's the best first run and the most polished map. <span class="soft">It can feel a bit slow if you already know survivors games: try the other worlds next.</span></li>
+        <li><b>Heroes: start with the first ones in the list.</b> They're the most balanced. <span class="soft">The others are newer and still being tuned.</span></li>
+      </ul>
+    </div>
+  </div>
+
   <section id="controls">
     <h2><span class="n">01</span> Controls</h2>
     <p class="sub">Your gun fires on its own at enemies in range. You move, dodge and pick your fights.</p>
