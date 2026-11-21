@@ -43,7 +43,7 @@ section{padding:40px 0}
 
 /* first run callout */
 .first{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;margin:34px 0 0;padding:18px 22px;background:var(--panel);border:3px solid var(--cyan);box-shadow:8px 8px 0 var(--pink)}
-.first .ic{font-size:40px;line-height:1}
+.first .ic img{width:132px;height:auto;border:3px solid #fff;border-radius:6px;box-shadow:4px 4px 0 var(--pink)}
 .first h3{margin:0 0 6px;font:800 italic 24px/1.1 var(--display);text-transform:uppercase;color:var(--cyan)}
 .first ul{margin:0;padding-left:18px}
 .first li{margin:3px 0}
@@ -81,9 +81,10 @@ kbd.a{background:#5fd068}kbd.x{background:#4aa3ff}kbd.y{background:#ffd23f}
 /* tips */
 .tips{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media (max-width:760px){.tips{grid-template-columns:1fr}}
-.tip{display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start;background:var(--panel);padding:18px 20px;border-left:6px solid var(--pink)}
+.tip{display:grid;grid-template-columns:64px 1fr;gap:16px;align-items:start;background:var(--panel);padding:18px 20px;border-left:6px solid var(--pink)}
 .tip:nth-child(even){border-left-color:var(--cyan)}
-.tip .ic{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--panel2);font-size:28px}
+.tip .ic{width:64px;height:64px;border-radius:12px;display:grid;place-items:center;background:var(--panel2)}
+.tip .ic img{max-width:50px;max-height:50px;width:auto;height:auto}
 .tip h3{margin:2px 0 4px;font:800 21px/1.15 var(--display)}
 .tip p{margin:0;font-size:17px;color:#e7e1f1}
 .tip p b{color:var(--ink)}
@@ -117,7 +118,7 @@ kbd.a{background:#5fd068}kbd.x{background:#4aa3ff}kbd.y{background:#ffd23f}
 
 <main class="wrap">
   <div class="first">
-    <span class="ic">🌱</span>
+    <span class="ic"><img src="icons/grassland.png" alt="Grassland"></span>
     <div><h3>Your first run</h3>
       <ul>
         <li><b>World: Grassland.</b> It's the best first run and the most polished map. <span class="soft">It can feel a bit slow if you already know survivors games: try the other worlds next.</span></li>
@@ -178,12 +179,12 @@ kbd.a{background:#5fd068}kbd.x{background:#4aa3ff}kbd.y{background:#ffd23f}
     <h2><span class="n">03</span> What new players miss</h2>
     <p class="sub">The things that make a run strong, and that nobody tells you.</p>
     <div class="tips">
-      <div class="tip"><span class="ic">🗺️</span><div><h3>Optional challenges = the best rewards</h3><p>Team challenges and timed traversal puzzles are hidden around the map. They're <b>optional</b>, and they pay out rare rewards you won't get anywhere else.</p></div></div>
-      <div class="tip"><span class="ic">🛡️</span><div><h3>Your accessory saves you once</h3><p>It blocks one hit, then <b>pops off and lands nearby</b>. Walk over it to put it back on. Lost durability can be repaired at the Store during the Break.</p></div></div>
-      <div class="tip"><span class="ic">🔫</span><div><h3>You don't have to swap guns</h3><p>Love your weapon? <b>Keep it.</b> Skip the new guns in the Store and make yours stronger at the Gunsmith instead: one upgrade per Break.</p></div></div>
-      <div class="tip"><span class="ic">🔄</span><div><h3>The Store restocks every Break</h3><p>New weapons, food and repairs every time, so <b>check it on every Break</b>, even if it had nothing you wanted last time.</p></div></div>
-      <div class="tip"><span class="ic">⛰️</span><div><h3>Use the height</h3><p>The map isn't flat. Ledges, ramps and gaps give you <b>escape routes</b> and safer angles in a fight.</p></div></div>
-      <div class="tip"><span class="ic">📍</span><div><h3>Ping and stick together</h3><p>Ping elites, stores and challenges for your team. Solo works, but <b>co-op is where the chaos lives</b>.</p></div></div>
+      <div class="tip"><span class="ic"><img src="icons/challenge.png" alt="Challenge flag"></span><div><h3>Optional challenges = the best rewards</h3><p>Team challenges and timed traversal puzzles are hidden around the map. They're <b>optional</b>, and they pay out rare rewards you won't get anywhere else.</p></div></div>
+      <div class="tip"><span class="ic"><img src="icons/accessory.png" alt="Accessory shield"></span><div><h3>Your accessory saves you once</h3><p>It blocks one hit, then <b>pops off and lands nearby</b>. Walk over it to put it back on. Lost durability can be repaired at the Store during the Break.</p></div></div>
+      <div class="tip"><span class="ic"><img src="icons/gunsmith.png" alt="Gunsmith"></span><div><h3>You don't have to swap guns</h3><p>Love your weapon? <b>Keep it.</b> Skip the new guns in the Store and make yours stronger at the Gunsmith instead: one upgrade per Break.</p></div></div>
+      <div class="tip"><span class="ic"><img src="icons/store.png" alt="Store"></span><div><h3>The Store restocks every Break</h3><p>New weapons, food and repairs every time, so <b>check it on every Break</b>, even if it had nothing you wanted last time.</p></div></div>
+      <div class="tip"><span class="ic"><img src="icons/height.png" alt="Traversal"></span><div><h3>Use the height</h3><p>The map isn't flat. Ledges, ramps and gaps give you <b>escape routes</b> and safer angles in a fight.</p></div></div>
+      <div class="tip"><span class="ic"><img src="icons/ping.png" alt="Ping"></span><div><h3>Ping and stick together</h3><p>Ping elites, stores and challenges for your team. Solo works, but <b>co-op is where the chaos lives</b>.</p></div></div>
     </div>
     <div class="feature">
       <video muted loop playsinline autoplay preload="metadata" poster="../gifs/gunsmith-coop.jpg" src="../gifs/gunsmith-coop.mp4"></video>
@@ -195,7 +196,6 @@ kbd.a{background:#5fd068}kbd.x{background:#4aa3ff}kbd.y{background:#ffd23f}
   <div class="cta">
     <a class="main" id="back" href="../play/">▶ Back to the game</a>
     <a href="https://store.steampowered.com/app/5545250/?utm_source=pachagames&amp;utm_medium=tutorial" target="_blank" rel="noopener">Wishlist on Steam ↗</a>
-    <a href="https://discord.gg/mqyF4EJKrA" target="_blank" rel="noopener">Join the Discord ↗</a>
     <p>Questions or feedback? <a href="mailto:vini@pachagames.com">vini@pachagames.com</a></p>
   </div>
 </main>
