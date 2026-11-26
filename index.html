@@ -68,18 +68,10 @@ h2{font-weight:900;font-stretch:125%;font-size:clamp(2rem,4.6vw,3.5rem);line-hei
 .status{font:800 11.5px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--cyan)}
 .feature p{color:#e3e4ec;max-width:46ch}
 .feature .art{position:relative;align-self:end;justify-self:center;width:min(92%,520px);height:auto;display:block;margin:clamp(16px,2.4vw,28px) 0 calc(min(92%,520px) * -.055);filter:drop-shadow(0 18px 30px rgba(10,15,36,.5))}
-.others{margin-top:clamp(44px,5vw,68px);font-size:clamp(1.5rem,3vw,2.3rem)}
-.second{margin-top:20px;display:grid;align-items:center;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);background:#fff;border:1px solid var(--line)}
-.second>a{display:block;min-width:0}
-.second .ctas{align-items:center}
-.second>a>img{width:100%;height:auto;display:block}
-.more{font:800 12px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;padding:6px 0;justify-self:start}
-.more:hover{color:var(--pink-deep)}
-.second .text{display:grid;align-content:center;gap:12px;padding:clamp(20px,2.4vw,32px)}
 h3{font-weight:900;font-stretch:125%;font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1;letter-spacing:-.02em;text-transform:uppercase}
-.second p{color:var(--muted)}
-.facts{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
-.facts li{font:700 12px/1 var(--sans);letter-spacing:.04em;padding:9px 12px;background:var(--paper);border:1px solid var(--line)}
+.earlier{margin-top:28px;font-size:14px;color:var(--muted)}
+.earlier a{font-weight:700;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.earlier a:hover{color:var(--pink-deep)}
 
 .contact{padding-block:clamp(64px,8vw,100px) 40px}
 .contact .row{display:flex;flex-wrap:wrap;gap:28px;align-items:end;justify-content:space-between}
@@ -102,8 +94,6 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1
   .feature::before{background:linear-gradient(180deg,rgba(10,15,36,.94) 0,rgba(10,15,36,.82) 62%,rgba(10,15,36,.2) 100%)}
   .feature .art{width:min(82%,420px);justify-self:center;margin:0 auto calc(min(82%,420px) * -.055)}
   .pillars{grid-template-columns:minmax(0,1fr)}
-  .second{grid-template-columns:minmax(0,1fr)}
-  .second>a>img{height:auto}
 }
 </style>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="ec12085d-d64f-4396-bc3d-f3ccdd5e73f3"></script>
@@ -126,8 +116,8 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1
         <h1 class="rise">Made for<br><span class="label">one more<br><span class="big">round.</span></span></h1>
         <p class="lede rise" style="--d:.18s">Pacha Games is the solo studio of Vinicius Pacha. Now building Rift Jumpers.</p>
         <div class="ctas rise" style="--d:.28s">
-          <a class="btn solid" href="riftjumpers/play/" data-umami-event="Play click" data-umami-event-page="home">Play Rift Jumpers ▶</a>
-          <a class="btn" href="#games">Our games ↓</a>
+          <a class="btn solid" href="https://store.steampowered.com/app/5545250/?utm_source=pachagames&amp;utm_medium=home" target="_blank" rel="noopener" data-umami-event="Steam click" data-umami-event-page="home">Wishlist on Steam ↗</a>
+          <a class="btn" href="riftjumpers/play/" data-umami-event="Play click" data-umami-event-page="home">Play the playtest ▶</a>
         </div>
       </div>
     </div>
@@ -147,33 +137,18 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1
       <article class="feature">
         <div class="text">
           <img class="logo" src="riftjumpers/logos/rift-jumpers-logo-white.svg?v=20261105" alt="Rift Jumpers" width="1984" height="1753" style="width:min(100%,250px)">
-          <span class="status">In development · Playtest open</span>
+          <span class="status">Wishlist on Steam · Playtest open</span>
           <p>A top-down co-op survivors roguelite for 1–4 players. Explore procedural maps, stack perks on ridiculous guns, survive the horde and take down the boss.</p>
           <div class="ctas">
-            <a class="btn solid" href="riftjumpers/play/" data-umami-event="Play click" data-umami-event-page="home">Play now ▶</a>
+            <a class="btn solid" href="https://store.steampowered.com/app/5545250/?utm_source=pachagames&amp;utm_medium=home" target="_blank" rel="noopener" data-umami-event="Steam click" data-umami-event-page="home">Wishlist on Steam ↗</a>
+            <a class="btn" href="riftjumpers/play/" data-umami-event="Play click" data-umami-event-page="home">Play now ▶</a>
             <a class="btn" href="riftjumpers/">Press kit</a>
           </div>
         </div>
         <img class="art" src="assets/rift-jumpers-trio.webp" alt="Brute, Max and Pixie from Rift Jumpers" width="1000" height="1037" loading="lazy">
       </article>
 
-      <h2 class="others" id="other-games">Other games</h2>
-
-      <article class="second" aria-labelledby="other-games">
-        <a href="jellydash/" aria-label="Jelly Dash page"><img src="assets/jelly-dash.jpg" alt="Jelly Dash banner with racing red, blue and green jellies" width="1672" height="941" loading="lazy"></a>
-        <div class="text">
-          <h3>Jelly Dash</h3>
-          <p>A fast-paced multiplayer racing game. Swing, stretch and dash to the finish line with one finger.</p>
-          <ul class="facts">
-            <li>1M+ plays on CrazyGames</li>
-            <li>1st place, CrazyGames multiplayer web game jam</li>
-          </ul>
-          <div class="ctas" style="margin-top:8px">
-            <a class="btn solid" href="https://www.crazygames.com/game/jelly-dash-uki" target="_blank" rel="noopener" data-umami-event="Jelly Dash click" data-umami-event-page="home">Play now ↗</a>
-          </div>
-          <a class="more" href="jellydash/">About the game →</a>
-        </div>
-      </article>
+      <p class="earlier">Earlier work: <a href="jellydash/">Jelly Dash</a>, a multiplayer web racer (1M+ plays on CrazyGames).</p>
     </div>
   </section>
 
@@ -185,7 +160,7 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1
           <h2 id="contact-h">Come play with us.</h2>
         </div>
         <div class="ctas">
-          <a class="btn solid" href="https://discord.gg/aafnJQq6Vx" target="_blank" rel="noopener" data-umami-event="Discord click" data-umami-event-page="home">Join the Discord ↗</a>
+          <a class="btn solid" href="https://discord.gg/mqyF4EJKrA" target="_blank" rel="noopener" data-umami-event="Discord click" data-umami-event-page="home">Join the Discord ↗</a>
           <a class="btn" href="mailto:admin@pachagames.com">admin@pachagames.com</a>
           <a class="btn" href="riftjumpers/#contact">Press kit</a>
         </div>
